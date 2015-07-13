@@ -1,9 +1,6 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
-
-namespace WorldData.ViewModels
+﻿namespace WorldData.ViewModels
 {
-    public class ViewModelBase : INotifyPropertyChanged
+    public class ViewModelBase : ObservableObject
     {
         private string title;
 
@@ -31,15 +28,5 @@ namespace WorldData.ViewModels
         }
         
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void RaisePropertyChanged([CallerMemberName]string propertyName = null)
-        {
-            if (PropertyChanged == null)
-                return;
-            
-            PropertyChanged(this,new PropertyChangedEventArgs(propertyName));
-            
-        }
     }
 }

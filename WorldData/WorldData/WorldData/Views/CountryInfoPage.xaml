@@ -5,7 +5,7 @@
              x:Class="WorldData.Views.CountryInfoPage"
              xmlns:ig="clr-namespace:Infragistics.XF.Controls;assembly=InfragisticsXF.Controls.Charts">
   <ScrollView>
-    <Grid HorizontalOptions="FillAndExpand"
+    <Grid BackgroundColor="White" HorizontalOptions="FillAndExpand"
       Padding="0"
       RowSpacing="0"
       ColumnSpacing="0"
@@ -177,7 +177,7 @@
           </ig:XFDataChart.Series>
         </ig:XFDataChart>
 
-       <Frame Grid.Row="1" Grid.Column="1" 
+       <!--<Frame Grid.Row="1" Grid.Column="1" 
                x:Name="overlay"
                 BackgroundColor="#404040"
                 Opacity="{Binding OverlayOpacity}"
@@ -187,14 +187,15 @@
                              FontSize="{x:Static local:Theme.FontSizeMicro}"
                              TextColor="White"
                         Text="{Binding StatusText}" />
-        </Frame>
+        </Frame>-->
       
       </Grid>
+      
       <ListView x:Name="OptionItemsView"
                 RowHeight="30"
                 ItemsSource="{Binding ItemsSource}"
                 SeparatorColor="{x:Static local:Theme.PrimaryColor}"
-                Grid.Row="2" BackgroundColor="White"
+                Grid.Row="2"
                 HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
         <ListView.ItemTemplate>
           <DataTemplate>

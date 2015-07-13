@@ -1,56 +1,61 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using WorldData.Repository;
 using Xamarin.Forms;
 
 namespace WorldData.ViewModels
 {
     public class HomePageViewModel : ViewModelBase
     {
-        private List<DataItem> data;
+        private ObservableCollection<DataItem> data;
 
-        public List<DataItem> Data
+        public ObservableCollection<DataItem> Data
         {
             get { return data; }
-            set { data = value; RaisePropertyChanged();}
+            set { data = value; RaisePropertyChanged(); }
         }
 
-        private List<Item> itemsSource;
+        private ObservableCollection<Item> itemsSource;
 
-        public List<Item> ItemsSource
+        public ObservableCollection<Item> ItemsSource
         {
             get { return itemsSource; }
-            set { itemsSource = value; }
+            set { itemsSource = value; RaisePropertyChanged(); }
         }
-        
+
 
         public HomePageViewModel()
         {
-            
-              Data = new List<DataItem>
-              {
-                  new DataItem { Label = "Europe", Value = 5 },
-                  new DataItem { Label = "Africa", Value = 6 },
-                  new DataItem { Label = "Oceania", Value = 3 },
-                  new DataItem { Label = "South America", Value = 7 },
-                  new DataItem { Label = "Asia", Value = 12 }
+            var worldRepository = new WorldDataRepository();
 
-              };
+            Data = new ObservableCollection<DataItem>();
+            ItemsSource = new ObservableCollection<Item>();
 
-              ItemsSource = new List<Item>
+            worldRepository.GetCountries().ContinueWith((list) =>
             {
-                new Item{ Name = "India"},
-                new Item{ Name = "China"},
-                new Item{ Name = "America"},
-                new Item{ Name = "Italy"},
-                new Item{ Name = "Rome"},
-                new Item{ Name = "United Kingdom"},
-            };
+                var countries = list.Result;
+                var data = new ObservableCollection<DataItem>();
+                foreach (var item in countries)
+                {
+                    ItemsSource.Add(new Item { Name = item.Name });
+                }
+                foreach (var region in worldRepository.CountriesByRegion)
+                {
+                    var dataItem = new DataItem();
+                    dataItem.Label = region.Key;
+                    dataItem.Level = region.Value.Sum(x => x.Level.ToDouble());
+                    data.Add(dataItem);
+                }
+                Data = data;
+            });
+
         }
     }
-
 
     public class Item
     {

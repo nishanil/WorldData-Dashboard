@@ -12,7 +12,7 @@ namespace WorldData
         public App()
         {
             // The root page of your application
-            var navPage = new NavigationPage(new CountryInfoPage());
+            var navPage = new NavigationPage(new HomePage());
             navPage.BarTextColor = Theme.PrimaryColor;
             MainPage = navPage;
         }

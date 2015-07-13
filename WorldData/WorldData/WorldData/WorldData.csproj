@@ -36,8 +36,14 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="Data.cs" />
+    <Compile Include="HelperExtensions.cs" />
+    <Compile Include="Models\Country.cs" />
+    <Compile Include="ObservableObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuandlData.cs" />
+    <Compile Include="Repository\CsvDataTable.cs" />
+    <Compile Include="Repository\DataProvider.cs" />
+    <Compile Include="Repository\WorldDataRepository.cs" />
     <Compile Include="Theme.cs" />
     <Compile Include="ViewModels\CountryInfoPageViewModel.cs" />
     <Compile Include="ViewModels\HomePageViewModel.cs" />
@@ -88,6 +94,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Data\world-stats-quandl.csv" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

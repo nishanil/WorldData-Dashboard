@@ -6,7 +6,7 @@
              x:Class="WorldData.Views.HomePage"
              Title="Dashboard">
   <ScrollView>
-    <Grid HorizontalOptions="FillAndExpand" 
+    <Grid BackgroundColor="White" HorizontalOptions="FillAndExpand" 
           Padding="0" 
           RowSpacing="0" 
           ColumnSpacing="0"
@@ -27,18 +27,20 @@
                        AllowSliceExplosion="True"
                        ItemsSource="{Binding Data}"
                        LabelMemberPath="Label"
-                       ValueMemberPath="Value"
+                       ValueMemberPath="Level"
                        HorizontalOptions="FillAndExpand"
                        VerticalOptions="FillAndExpand"
                        OthersCategoryThreshold="0"
                        LabelsPosition="OutsideEnd"
                        LeaderLineType="Arc"
                        LeaderLineVisibility="Visible"/>
+       
         <Label XAlign="Center"
                FontFamily="{x:Static local:Theme.FontFamilyUltraLight}"
                FontSize="{x:Static local:Theme.FontSizeLarge}"
                TextColor="{x:Static local:Theme.PrimaryColor}"
                Text="Population" />
+    
       </StackLayout>
       <Grid Grid.Row="1" 
             HorizontalOptions="FillAndExpand" 
@@ -117,18 +119,29 @@
                TextColor="{x:Static local:Theme.PrimaryColor}"
                Text="Data as of: 2013 " />
       </Grid>
+     
       <ListView x:Name="OptionItemsView"
                 RowHeight="25"
                 ItemsSource="{Binding ItemsSource}"
                 SeparatorColor="{x:Static local:Theme.PrimaryColor}"
-                Header="G20 Economies"
+                Header=""
                 Grid.Row="2" BackgroundColor="White"
                 HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
+        <ListView.HeaderTemplate >
+          <DataTemplate>
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Center"
+                          Padding="20,10,0,0">
+              <Label Text="Countries"  FontFamily="{x:Static local:Theme.FontFamilyMedium}"
+               FontSize="{x:Static local:Theme.FontSizeLarge}"
+               TextColor="{x:Static local:Theme.PrimaryColor}"/>
+            </Grid>
+          </DataTemplate>
+        </ListView.HeaderTemplate>
         <ListView.ItemTemplate>
           <DataTemplate>
             <ViewCell>
               <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Center"
-                           Padding="20,0,0,0">
+                           Padding="20,10,0,0">
                 <Label Text="{Binding Name}" Font="{x:Static local:Theme.FontFamilyRegular}"
                        TextColor="{x:Static local:Theme.PrimaryColor}"
                        HorizontalOptions="Start"
