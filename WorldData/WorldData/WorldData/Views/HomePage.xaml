@@ -5,137 +5,139 @@
              xmlns:local="clr-namespace:WorldData;assembly=WorldData"
              x:Class="WorldData.Views.HomePage"
              Title="Dashboard">
-<ScrollView>
-  <Grid HorizontalOptions="FillAndExpand" Padding="0" RowSpacing="0" ColumnSpacing="0"
-        VerticalOptions="FillAndExpand">
-    <Grid.RowDefinitions>
-      <RowDefinition Height="338"></RowDefinition>
-      <RowDefinition Height="Auto"></RowDefinition>
-      <RowDefinition Height="*"></RowDefinition>
-    </Grid.RowDefinitions>
-    <StackLayout Grid.Row="0" 
-                 HorizontalOptions="FillAndExpand"
-                 VerticalOptions="FillAndExpand">
-      <ig:XFPieChart HeightRequest="300" x:Name="pieChart"
-                  
-                   InnerExtent="0" RadiusFactor="0.7"
-                   AllowSliceSelection="True" StartAngle="150"
-                   AllowSliceExplosion="True"
-                   ItemsSource="{Binding Data}"
-                   LabelMemberPath="Label"
-                   ValueMemberPath="Value"
+  <ScrollView>
+    <Grid HorizontalOptions="FillAndExpand" 
+          Padding="0" 
+          RowSpacing="0" 
+          ColumnSpacing="0"
+          VerticalOptions="FillAndExpand">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="338"></RowDefinition>
+        <RowDefinition Height="Auto"></RowDefinition>
+        <RowDefinition Height="*"></RowDefinition>
+      </Grid.RowDefinitions>
+      <StackLayout Grid.Row="0"
                    HorizontalOptions="FillAndExpand"
-                   VerticalOptions="FillAndExpand"
-                   OthersCategoryThreshold="0"
-                   LabelsPosition="OutsideEnd"
-                   LeaderLineType="Arc"
-                   LeaderLineVisibility="Visible"/>
-    <Label XAlign="Center" 
-            FontFamily="{x:Static local:Theme.FontFamilyUltraLight}" 
-           FontSize="{x:Static local:Theme.FontSizeLarge}" 
-           TextColor="{x:Static local:Theme.PrimaryColor}" 
-          Text="Population" />
-    </StackLayout>
-
-    <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" Padding="0" RowSpacing="0" ColumnSpacing="0"
-        VerticalOptions="FillAndExpand" BackgroundColor="{x:Static local:Theme.LightColor}">  
-    <Grid.RowDefinitions>
-      <RowDefinition Height="10"></RowDefinition>
-      <RowDefinition Height="*"></RowDefinition>
-      
-      <RowDefinition Height="*"></RowDefinition>
-      <RowDefinition Height="10"></RowDefinition>
-    
-    </Grid.RowDefinitions>
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="2*"></ColumnDefinition>
-      <ColumnDefinition Width="*"></ColumnDefinition>
-      <ColumnDefinition Width="2*"></ColumnDefinition>
-      <ColumnDefinition Width="*"></ColumnDefinition>
-    
-    </Grid.ColumnDefinitions>
-     <Label Grid.Row="1" 
-            Grid.Column="0" 
-            HorizontalOptions="End"
-            VerticalOptions="CenterAndExpand"
-            FontFamily="{x:Static local:Theme.FontFamilyMedium}" 
-            FontSize="{x:Static local:Theme.FontSizeMicro}" 
-            TextColor="{x:Static local:Theme.PrimaryColor}" 
-            Text="World Population: " />
-        <Label Grid.Row="1" 
-            Grid.Column="1" 
-            HorizontalOptions="Start"
-            VerticalOptions="CenterAndExpand"
-            FontFamily="{x:Static local:Theme.FontFamilyUltraLight}" 
-            FontSize="{x:Static local:Theme.FontSizeMedium}" 
-            TextColor="Black" 
-            Text="6,132 m" />
-         <Label Grid.Row="2" 
-            Grid.Column="0" 
-            HorizontalOptions="End"
-            VerticalOptions="CenterAndExpand"
-            FontFamily="{x:Static local:Theme.FontFamilyMedium}" 
-            FontSize="{x:Static local:Theme.FontSizeMicro}" 
-            TextColor="{x:Static local:Theme.PrimaryColor}" 
-            Text="Life Expectancy: " />
-        <Label Grid.Row="2" 
-            Grid.Column="1" 
-            HorizontalOptions="Start"
-            VerticalOptions="CenterAndExpand"
-            FontFamily="{x:Static local:Theme.FontFamilyUltraLight}" 
-            FontSize="{x:Static local:Theme.FontSizeMedium}" 
-            TextColor="Black" 
-            Text="76.6 m" />
-         <Label Grid.Row="1" 
-            Grid.Column="2" 
-            HorizontalOptions="End"
-            VerticalOptions="CenterAndExpand"
-            FontFamily="{x:Static local:Theme.FontFamilyMedium}" 
-            FontSize="{x:Static local:Theme.FontSizeMicro}" 
-            TextColor="{x:Static local:Theme.PrimaryColor}" 
-            Text="Average Income: " />
-        <Label Grid.Row="1" 
-            Grid.Column="3" 
-            HorizontalOptions="Start"
-            VerticalOptions="CenterAndExpand"
-            FontFamily="{x:Static local:Theme.FontFamilyUltraLight}" 
-            FontSize="{x:Static local:Theme.FontSizeMedium}" 
-            TextColor="Black" 
-            Text="6,132" />
-            <Label Grid.Row="2"
-                   Grid.Column="2"
-            Grid.ColumnSpan="2" 
-            HorizontalOptions="End"
-            VerticalOptions="CenterAndExpand"
-            FontFamily="{x:Static local:Theme.FontFamilyItalic}" 
-            FontSize="{x:Static local:Theme.FontSizeMicro}" 
-            TextColor="{x:Static local:Theme.PrimaryColor}" 
-            Text="Data as of: 2013 " />
-    
-  </Grid>
-  
-       <ListView
-            x:Name="OptionItemsView"
-            RowHeight="25"
-            ItemsSource="{Binding ItemsSource}"
-            SeparatorColor="{x:Static local:Theme.PrimaryColor}"
-            Header="G20 Economies"
-            Grid.Row="2" BackgroundColor="White"
-            HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Center"
-                                     Padding="20,0,0,0">
-                            <Label Text="{Binding Name}" Font="{x:Static local:Theme.FontFamilyRegular}"
-                                   TextColor="{x:Static local:Theme.PrimaryColor}"
-                                   HorizontalOptions="Start"
-                                   VerticalOptions="Fill" />
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-  </Grid>
+                   VerticalOptions="FillAndExpand">
+        <ig:XFPieChart x:Name="pieChart"
+                       HeightRequest="300" 
+                       InnerExtent="0" 
+                       RadiusFactor="0.7"
+                       AllowSliceSelection="True" StartAngle="150"
+                       AllowSliceExplosion="True"
+                       ItemsSource="{Binding Data}"
+                       LabelMemberPath="Label"
+                       ValueMemberPath="Value"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand"
+                       OthersCategoryThreshold="0"
+                       LabelsPosition="OutsideEnd"
+                       LeaderLineType="Arc"
+                       LeaderLineVisibility="Visible"/>
+        <Label XAlign="Center"
+               FontFamily="{x:Static local:Theme.FontFamilyUltraLight}"
+               FontSize="{x:Static local:Theme.FontSizeLarge}"
+               TextColor="{x:Static local:Theme.PrimaryColor}"
+               Text="Population" />
+      </StackLayout>
+      <Grid Grid.Row="1" 
+            HorizontalOptions="FillAndExpand" 
+            Padding="0" 
+            RowSpacing="0" 
+            ColumnSpacing="0"
+            VerticalOptions="FillAndExpand" 
+            BackgroundColor="{x:Static local:Theme.LightColor}">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="10"></RowDefinition>
+          <RowDefinition Height="*"></RowDefinition>
+          <RowDefinition Height="*"></RowDefinition>
+          <RowDefinition Height="10"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="2*"></ColumnDefinition>
+          <ColumnDefinition Width="*"></ColumnDefinition>
+          <ColumnDefinition Width="2*"></ColumnDefinition>
+          <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="1"
+               Grid.Column="0"
+               HorizontalOptions="End"
+               VerticalOptions="CenterAndExpand"
+               FontFamily="{x:Static local:Theme.FontFamilyMedium}"
+               FontSize="{x:Static local:Theme.FontSizeMicro}"
+               TextColor="{x:Static local:Theme.PrimaryColor}"
+               Text="World Population: " />
+        <Label Grid.Row="1"
+               Grid.Column="1"
+               HorizontalOptions="Start"
+               VerticalOptions="CenterAndExpand"
+               FontFamily="{x:Static local:Theme.FontFamilyUltraLight}"
+               FontSize="{x:Static local:Theme.FontSizeMedium}"
+               TextColor="Black"
+               Text="6,132 m" />
+        <Label Grid.Row="2"
+               Grid.Column="0"
+               HorizontalOptions="End"
+               VerticalOptions="CenterAndExpand"
+               FontFamily="{x:Static local:Theme.FontFamilyMedium}"
+               FontSize="{x:Static local:Theme.FontSizeMicro}"
+               TextColor="{x:Static local:Theme.PrimaryColor}"
+               Text="Life Expectancy: " />
+        <Label Grid.Row="2"
+               Grid.Column="1"
+               HorizontalOptions="Start"
+               VerticalOptions="CenterAndExpand"
+               FontFamily="{x:Static local:Theme.FontFamilyUltraLight}"
+               FontSize="{x:Static local:Theme.FontSizeMedium}"
+               TextColor="Black"
+               Text="76.6 m" />
+        <Label Grid.Row="1"
+               Grid.Column="2"
+               HorizontalOptions="End"
+               VerticalOptions="CenterAndExpand"
+               FontFamily="{x:Static local:Theme.FontFamilyMedium}"
+               FontSize="{x:Static local:Theme.FontSizeMicro}"
+               TextColor="{x:Static local:Theme.PrimaryColor}"
+               Text="Average Income: " />
+        <Label Grid.Row="1"
+               Grid.Column="3"
+               HorizontalOptions="Start"
+               VerticalOptions="CenterAndExpand"
+               FontFamily="{x:Static local:Theme.FontFamilyUltraLight}"
+               FontSize="{x:Static local:Theme.FontSizeMedium}"
+               TextColor="Black"
+               Text="6,132" />
+        <Label Grid.Row="2"
+               Grid.Column="2"
+               Grid.ColumnSpan="2"
+               HorizontalOptions="End"
+               VerticalOptions="CenterAndExpand"
+               FontFamily="{x:Static local:Theme.FontFamilyItalic}"
+               FontSize="{x:Static local:Theme.FontSizeMicro}"
+               TextColor="{x:Static local:Theme.PrimaryColor}"
+               Text="Data as of: 2013 " />
+      </Grid>
+      <ListView x:Name="OptionItemsView"
+                RowHeight="25"
+                ItemsSource="{Binding ItemsSource}"
+                SeparatorColor="{x:Static local:Theme.PrimaryColor}"
+                Header="G20 Economies"
+                Grid.Row="2" BackgroundColor="White"
+                HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Center"
+                           Padding="20,0,0,0">
+                <Label Text="{Binding Name}" Font="{x:Static local:Theme.FontFamilyRegular}"
+                       TextColor="{x:Static local:Theme.PrimaryColor}"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Fill" />
+              </Grid>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+    </Grid>
   </ScrollView>
 </ContentPage>

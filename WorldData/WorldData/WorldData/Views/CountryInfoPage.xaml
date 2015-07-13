@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:WorldData;assembly=WorldData"
+             x:Class="WorldData.Views.CountryInfoPage"
+             xmlns:ig="clr-namespace:Infragistics.XF.Controls;assembly=InfragisticsXF.Controls.Charts">
+  <ScrollView>
+    <Grid HorizontalOptions="FillAndExpand"
+      Padding="0"
+      RowSpacing="0"
+      ColumnSpacing="0"
+      VerticalOptions="FillAndExpand">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*"></RowDefinition>
+        <RowDefinition Height="2*"></RowDefinition>
+        <RowDefinition Height="*"></RowDefinition>
+      </Grid.RowDefinitions>
+    
+      <!-- Country Info Grid -->
+      <Grid HorizontalOptions="FillAndExpand"
+        Padding="0"
+        RowSpacing="0"
+        ColumnSpacing="0"
+        VerticalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"></RowDefinition>
+          <RowDefinition Height="*"></RowDefinition>
+          <RowDefinition Height="*"></RowDefinition>
+          <RowDefinition Height="10"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="20"></ColumnDefinition>
+
+          <ColumnDefinition Width="2*"></ColumnDefinition>
+          <ColumnDefinition Width="*"></ColumnDefinition>
+          <ColumnDefinition Width="2*"></ColumnDefinition>
+          <ColumnDefinition Width="*"></ColumnDefinition>
+
+          <ColumnDefinition Width="20"></ColumnDefinition>
+
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0"
+               Grid.Column="1"
+               Grid.ColumnSpan="2"
+               HorizontalOptions="StartAndExpand"
+               VerticalOptions="CenterAndExpand"
+               FontFamily="{x:Static local:Theme.FontFamilyUltraLight}"
+               FontSize="{x:Static local:Theme.FontSizeExtraLarge}"
+               TextColor="{x:Static local:Theme.DefaultTextColor}"
+               Text="CHINA" />
+        <Label Grid.Row="0"
+               Grid.Column="3"
+               Grid.ColumnSpan="2"
+               HorizontalOptions="End"
+               VerticalOptions="CenterAndExpand"
+               FontFamily="{x:Static local:Theme.FontFamilyItalic}"
+               FontSize="{x:Static local:Theme.FontSizeMicro}"
+               TextColor="{x:Static local:Theme.PrimaryColor}"
+               Text="Data as of: 2013 " />
+
+        <Label Grid.Row="1"
+                       Grid.Column="1"
+                       HorizontalOptions="End"
+                       VerticalOptions="CenterAndExpand"
+                       FontFamily="{x:Static local:Theme.FontFamilyMedium}"
+                       FontSize="{x:Static local:Theme.FontSizeMicro}"
+                       TextColor="{x:Static local:Theme.DefaultTextColor}"
+                       Text="Average Income: " />
+        <Label Grid.Row="1"
+               Grid.Column="2"
+               HorizontalOptions="Start"
+               VerticalOptions="CenterAndExpand"
+               FontFamily="{x:Static local:Theme.FontFamilyUltraLight}"
+               FontSize="{x:Static local:Theme.FontSizeMedium}"
+               TextColor="{x:Static local:Theme.DefaultTextColor}"
+               Text="90" />
+        <Label Grid.Row="1"
+               Grid.Column="3"
+               HorizontalOptions="End"
+               VerticalOptions="CenterAndExpand"
+               FontFamily="{x:Static local:Theme.FontFamilyMedium}"
+               FontSize="{x:Static local:Theme.FontSizeMicro}"
+               TextColor="{x:Static local:Theme.DefaultTextColor}"
+               Text="Life Expectancy: " />
+        <Label Grid.Row="1"
+               Grid.Column="4"
+               HorizontalOptions="Start"
+               VerticalOptions="CenterAndExpand"
+               FontFamily="{x:Static local:Theme.FontFamilyUltraLight}"
+               FontSize="{x:Static local:Theme.FontSizeMedium}"
+               TextColor="{x:Static local:Theme.DefaultTextColor}"
+               Text="76.6" />
+        <Label Grid.Row="2"
+               Grid.Column="1"
+               HorizontalOptions="End"
+               VerticalOptions="CenterAndExpand"
+               FontFamily="{x:Static local:Theme.FontFamilyMedium}"
+               FontSize="{x:Static local:Theme.FontSizeMicro}"
+               TextColor="{x:Static local:Theme.DefaultTextColor}"
+               Text="Adult Literacy Rate: " />
+        <Label Grid.Row="2"
+               Grid.Column="2"
+               HorizontalOptions="Start"
+               VerticalOptions="CenterAndExpand"
+               FontFamily="{x:Static local:Theme.FontFamilyUltraLight}"
+               FontSize="{x:Static local:Theme.FontSizeMedium}"
+               TextColor="{x:Static local:Theme.DefaultTextColor}"
+               Text="6,132" />
+
+
+      </Grid>
+
+      <!-- Data Chart -->
+      <Grid Grid.Row="1" Padding="0"
+        RowSpacing="0"
+        ColumnSpacing="0"
+        VerticalOptions="FillAndExpand">
+
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="*" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="20"></ColumnDefinition>
+          <ColumnDefinition Width="*"></ColumnDefinition>
+          <ColumnDefinition Width="20"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+         <Label Grid.Row="0"
+                Grid.Column="1"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"
+                FontFamily="{x:Static local:Theme.FontFamilyUltraLight}"
+                FontSize="{x:Static local:Theme.FontSizeLarge}"
+                TextColor="{x:Static local:Theme.PrimaryColor}"
+                Text="Growth (annual %)" />
+        
+       
+
+        <ig:XFDataChart x:Name="theChart"
+                        Grid.Row="1" Grid.Column="1"
+                        HorizontalZoomable="true" VerticalZoomable="true" >
+          <ig:XFDataChart.Axes>
+            <ig:NumericYAxis x:Name="yAxis"
+                                      />
+            <ig:CategoryXAxis x:Name="xAxis"
+              ItemsSource="{Binding Data}"
+              Label="Date"
+              LabelExtent="60"
+              LabelAngle="45"
+                  />
+          </ig:XFDataChart.Axes>
+          <ig:XFDataChart.Series>
+            <ig:BollingerBandsOverlay x:Name="bbands"
+                       ItemsSource="{Binding Data}"
+                       XAxis="{x:Reference xAxis}"
+                       YAxis="{x:Reference yAxis}"
+                       OpenMemberPath="Open"
+                       HighMemberPath="High"
+                      LowMemberPath="Low"
+                      IsTransitionInEnabled="True"
+                      CloseMemberPath="Close" />
+
+            <ig:FinancialPriceSeries x:Name="lineSeries"
+                     ItemsSource="{Binding Data}"
+                     XAxis="{x:Reference xAxis}"
+                     YAxis="{x:Reference yAxis}"
+                      Resolution="8"
+                     OpenMemberPath="Open"
+                     HighMemberPath="High"
+                    LowMemberPath="Low"
+                    IsTransitionInEnabled="True"
+                    CloseMemberPath="Close">
+            </ig:FinancialPriceSeries>
+          </ig:XFDataChart.Series>
+        </ig:XFDataChart>
+
+       <Frame Grid.Row="1" Grid.Column="1" 
+               x:Name="overlay"
+                BackgroundColor="#404040"
+                Opacity="{Binding OverlayOpacity}"
+                HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+          <Label x:Name="downloadingData"
+               FontFamily="{x:Static local:Theme.FontFamilyMedium}"
+                             FontSize="{x:Static local:Theme.FontSizeMicro}"
+                             TextColor="White"
+                        Text="{Binding StatusText}" />
+        </Frame>
+      
+      </Grid>
+      <ListView x:Name="OptionItemsView"
+                RowHeight="30"
+                ItemsSource="{Binding ItemsSource}"
+                SeparatorColor="{x:Static local:Theme.PrimaryColor}"
+                Grid.Row="2" BackgroundColor="White"
+                HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Center"
+                           Padding="20,0,0,0">
+                <Label Text="{Binding Name}" Font="{x:Static local:Theme.FontFamilyRegular}"
+                       TextColor="{x:Static local:Theme.PrimaryColor}"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Fill" />
+              </Grid>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+
+    </Grid>
+  </ScrollView>
+</ContentPage>

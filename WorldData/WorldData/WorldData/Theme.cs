@@ -18,6 +18,11 @@ namespace WorldData
             get { return Xamarin.Forms.Color.FromHex("#E2E2E2"); }
         }
 
+        public static Xamarin.Forms.Color DefaultTextColor
+        {
+            get { return Xamarin.Forms.Color.FromHex("#002319"); }
+        }
+
         public static string FontFamilyMedium {
             get
             {
@@ -68,6 +73,11 @@ namespace WorldData
         public static double FontSizeLarge
         {
             get { return Device.OnPlatform(iOS: 24, Android: Device.GetNamedSize(NamedSize.Large, typeof(Label)), WinPhone: Device.GetNamedSize(NamedSize.Large, typeof(Label))); }
+        }
+
+        public static double FontSizeExtraLarge
+        {
+            get { return Device.OnPlatform(iOS: 48, Android: Device.GetNamedSize(NamedSize.Large, typeof(Label)), WinPhone: Device.GetNamedSize(NamedSize.Large, typeof(Label))); }
         }
     }
 }
