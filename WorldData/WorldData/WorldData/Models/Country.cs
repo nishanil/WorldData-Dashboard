@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using Newtonsoft.Json.Schema;
 
 namespace WorldData.Models
@@ -60,6 +61,13 @@ namespace WorldData.Models
         {
             get { return chg1y; }
             set { chg1y = value; RaisePropertyChanged(); }
+        }
+
+
+
+        public bool IsChangePositive
+        {
+            get { return !(Chg1Y.StartsWith("-", StringComparison.OrdinalIgnoreCase)); }
         }
 
         private string year5;

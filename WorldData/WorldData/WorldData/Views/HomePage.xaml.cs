@@ -12,15 +12,30 @@ namespace WorldData.Views
     public partial class HomePage : ContentPage
     {
         protected XFPieChart chartView;
+        private HomePageViewModel vm;
         public HomePage()
         {
             InitializeComponent();
             
 
-            BindingContext = new HomePageViewModel();
+            BindingContext = vm =  new HomePageViewModel();
             chartView = (pieChart as XFPieChart);
             chartView.SliceClick += chartView_SliceClick;
 
+            searchBar.TextChanged += searchBar_TextChanged;
+        }
+
+        void searchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            PerformSearch(searchBar.Text);
+        }
+
+        private void PerformSearch(string searchtext)
+        {
+            CountryListView.BeginRefresh();
+
+            CountryListView.ItemsSource = string.IsNullOrEmpty(searchtext) ? vm.ItemsSource : vm.ItemsSource.Where(x => x.Name.ToLower().Contains(searchtext.ToLower()));
+            CountryListView.EndRefresh();
         }
 
         void chartView_SliceClick(object sender, SliceClickEventArgs e)

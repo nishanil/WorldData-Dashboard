@@ -5,6 +5,11 @@
              xmlns:local="clr-namespace:WorldData;assembly=WorldData"
              x:Class="WorldData.Views.HomePage"
              Title="Dashboard">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <local:BoolToColorConverter x:Key="BoolToColorConverter"></local:BoolToColorConverter>
+    </ResourceDictionary>
+  </ContentPage.Resources>
   <ScrollView>
     <Grid BackgroundColor="White" HorizontalOptions="FillAndExpand" 
           Padding="0" 
@@ -12,7 +17,8 @@
           ColumnSpacing="0"
           VerticalOptions="FillAndExpand">
       <Grid.RowDefinitions>
-        <RowDefinition Height="338"></RowDefinition>
+        <RowDefinition Height="300"></RowDefinition>
+        <RowDefinition Height="Auto"></RowDefinition>
         <RowDefinition Height="Auto"></RowDefinition>
         <RowDefinition Height="*"></RowDefinition>
       </Grid.RowDefinitions>
@@ -119,19 +125,19 @@
                TextColor="{x:Static local:Theme.PrimaryColor}"
                Text="Data as of: 2013 " />
       </Grid>
-     
-      <ListView x:Name="OptionItemsView"
-                RowHeight="25"
+      <SearchBar Grid.Row="2" Placeholder="Search" CancelButtonColor="{x:Static local:Theme.PrimaryColor}" x:Name="searchBar"></SearchBar>
+      <ListView x:Name="CountryListView"
+                RowHeight="50"
                 ItemsSource="{Binding ItemsSource}"
                 SeparatorColor="{x:Static local:Theme.PrimaryColor}"
                 Header=""
-                Grid.Row="2" BackgroundColor="White"
+                Grid.Row="3" BackgroundColor="White"
                 HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
         <ListView.HeaderTemplate >
           <DataTemplate>
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Center"
                           Padding="20,10,0,0">
-              <Label Text="Countries"  FontFamily="{x:Static local:Theme.FontFamilyMedium}"
+              <Label Text="Countries"  FontFamily="{x:Static local:Theme.FontFamilyRegular}"
                FontSize="{x:Static local:Theme.FontSizeLarge}"
                TextColor="{x:Static local:Theme.PrimaryColor}"/>
             </Grid>
@@ -141,11 +147,35 @@
           <DataTemplate>
             <ViewCell>
               <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Center"
-                           Padding="20,10,0,0">
-                <Label Text="{Binding Name}" Font="{x:Static local:Theme.FontFamilyRegular}"
+                           Padding="20,10,20,0" 
+                    RowSpacing="0" 
+                   ColumnSpacing="0">
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="*"></RowDefinition>
+                  <RowDefinition Height="12"></RowDefinition>
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                  
+                  <ColumnDefinition Width="Auto"></ColumnDefinition>
+                  <ColumnDefinition Width="*"></ColumnDefinition>
+                  <ColumnDefinition Width="Auto"></ColumnDefinition>
+
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Text="{Binding Name}" Font="{x:Static local:Theme.FontFamilyMedium}"
                        TextColor="{x:Static local:Theme.PrimaryColor}"
                        HorizontalOptions="Start"
                        VerticalOptions="Fill" />
+                <Label Grid.Row="0" Grid.Column="2" Text="{Binding Change}" Font="{x:Static local:Theme.FontFamilyMedium}"
+                      TextColor="{Binding IsChangePositive, Converter={StaticResource BoolToColorConverter}}"
+                      HorizontalOptions="End"
+                      VerticalOptions="Fill" />
+                <Label Grid.Row="1" Grid.Column="2" Text= "1Ychg"  
+                       FontFamily="{x:Static local:Theme.FontFamilyItalic}"
+                       FontSize="{x:Static local:Theme.FontSizeXMicro}"
+                       TextColor="{x:Static local:Theme.PrimaryColor}"
+                       HorizontalOptions="End"
+                       VerticalOptions="Start" />
               </Grid>
             </ViewCell>
           </DataTemplate>

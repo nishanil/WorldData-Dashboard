@@ -13,6 +13,12 @@ namespace WorldData
             get { return Xamarin.Forms.Color.FromHex("#22D09B"); }
         }
 
+        //D0021B
+
+        public static Xamarin.Forms.Color ErrorColor
+        {
+            get { return Xamarin.Forms.Color.FromHex("#D0021B"); }
+        }
         public static Xamarin.Forms.Color LightColor
         {
             get { return Xamarin.Forms.Color.FromHex("#E2E2E2"); }
@@ -64,6 +70,13 @@ namespace WorldData
             get { return Device.OnPlatform(iOS: 13, Android: Device.GetNamedSize(NamedSize.Micro, typeof(Label)), WinPhone: Device.GetNamedSize(NamedSize.Micro, typeof(Label))); }
 
         }
+
+        public static double FontSizeXMicro
+        {
+            get { return Device.OnPlatform(iOS: 9, Android: Device.GetNamedSize(NamedSize.Micro, typeof(Label)), WinPhone: Device.GetNamedSize(NamedSize.Micro, typeof(Label))); }
+
+        }
+
         public static double FontSizeMedium
         {
             get { return Device.OnPlatform(iOS: 17, Android: Device.GetNamedSize(NamedSize.Medium, typeof(Label)), WinPhone: Device.GetNamedSize(NamedSize.Medium, typeof(Label))); }

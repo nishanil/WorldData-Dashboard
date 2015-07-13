@@ -42,7 +42,7 @@ namespace WorldData.ViewModels
                 var data = new ObservableCollection<DataItem>();
                 foreach (var item in countries)
                 {
-                    ItemsSource.Add(new Item { Name = item.Name });
+                    ItemsSource.Add(new Item { Name = item.Name, Change = item.Chg1Y, IsChangePositive = item.IsChangePositive});
                 }
                 foreach (var region in worldRepository.CountriesByRegion)
                 {
@@ -60,7 +60,9 @@ namespace WorldData.ViewModels
     public class Item
     {
         public string Name { get; set; }
+        public string Change { get; set; }
 
+        public bool IsChangePositive { get; set; }
 
     }
 }
