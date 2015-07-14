@@ -20,19 +20,11 @@ namespace WorldData.ViewModels
 
         public CountryInfoPageViewModel(Country selectedCountry)
         {
-            OverlayOpacity = 0.5;
+            
             
             Country = selectedCountry;
 
-            QuandlData.GetPopulationDataAsync("yz1ovVBpJ6TC8viUCSLs", selectedCountry.AreaCode.ToLower(), "SP_POP_TOTL")
-                .ContinueWith((data) =>
-            {
-                StatusText = "";
-                Data = data.Result;
-                OverlayOpacity = 0;
-
-                
-            });
+            GetPopulation();
 
 
             ItemsSource = new List<Item>
@@ -43,6 +35,17 @@ namespace WorldData.ViewModels
             };
 
 
+        }
+
+        public void GetPopulation( string transformation=null)
+        {
+            ShowOverlay = true;
+            QuandlData.GetPopulationDataAsync("yz1ovVBpJ6TC8viUCSLs", Country.AreaCode.ToLower(), "SP_POP_TOTL", transformation)
+                .ContinueWith((data) =>
+                {
+                    Data = data.Result;
+                    ShowOverlay = false;
+                });
         }
 
         private PopulationData _data;
@@ -59,21 +62,6 @@ namespace WorldData.ViewModels
             }
         }
 
-        private string _statusText = "Downloading...";
-        public string StatusText
-        {
-            get
-            {
-                return _statusText;
-            }
-            set
-            {
-                _statusText = value;
-                RaisePropertyChanged();
-            }
-        }
-
-
         private List<Item> itemsSource;
 
         public List<Item> ItemsSource
@@ -82,12 +70,12 @@ namespace WorldData.ViewModels
             set { itemsSource = value; }
         }
 
-        private double overlayOpacity;
+        private bool showOverlay;
 
-        public double OverlayOpacity
+        public bool ShowOverlay
         {
-            get { return overlayOpacity; }
-            set { overlayOpacity = value; RaisePropertyChanged(); }
+            get { return showOverlay; }
+            set { showOverlay = value; RaisePropertyChanged(); }
         }
         
         

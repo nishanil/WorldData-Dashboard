@@ -49,6 +49,12 @@
     <Compile Include="ViewModels\CountryInfoPageViewModel.cs" />
     <Compile Include="ViewModels\HomePageViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\ChartView.xaml.cs">
+      <DependentUpon>ChartView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CountryDetailsPage.xaml.cs">
+      <DependentUpon>CountryDetailsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CountryInfoPage.xaml.cs">
       <DependentUpon>CountryInfoPage.xaml</DependentUpon>
     </Compile>
@@ -106,6 +112,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\HomePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ChartView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\CountryDetailsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

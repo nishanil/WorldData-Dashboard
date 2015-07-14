@@ -105,70 +105,7 @@
       </Grid>
 
       <!-- Data Chart -->
-      <Grid Grid.Row="1" Padding="0"
-        RowSpacing="0"
-        ColumnSpacing="0"
-        VerticalOptions="FillAndExpand">
-
-        <Grid.RowDefinitions>
-          <RowDefinition Height="Auto" />
-          <RowDefinition Height="*" />
-          <RowDefinition Height="Auto" />
-          <RowDefinition Height="Auto" />
-
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="20"></ColumnDefinition>
-          <ColumnDefinition Width="*"></ColumnDefinition>
-          <ColumnDefinition Width="20"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-
-         <Label Grid.Row="0"
-                Grid.Column="1"
-                HorizontalOptions="CenterAndExpand"
-                VerticalOptions="CenterAndExpand"
-                FontFamily="{x:Static local:Theme.FontFamilyUltraLight}"
-                FontSize="{x:Static local:Theme.FontSizeLarge}"
-                TextColor="{x:Static local:Theme.PrimaryColor}"
-                Text="Growth (annual %)" />
-
-        <ig:XFDataChart x:Name="lineChart"
-                        Grid.Row="1" Grid.Column="1"
-                        HorizontalZoomable="true" VerticalZoomable="true" >
-          <ig:XFDataChart.Axes>
-            <ig:NumericYAxis x:Name="yAxis" IsLogarithmic="False" Label=" {}{0:#,} K" />
-            <ig:CategoryXAxis x:Name="xAxis" ItemsSource="{Binding Data}" Label="Date" />
-          </ig:XFDataChart.Axes>
-          <ig:XFDataChart.Series>
-
-            <ig:LineSeries ItemsSource="{Binding Data}" Title="{Binding CountryName}"
-                           XAxis="{x:Reference xAxis}"
-                           YAxis="{x:Reference yAxis}"
-                           ValueMemberPath="Value" />
-
-          </ig:XFDataChart.Series>
-        </ig:XFDataChart>
-        <Picker Grid.Row="2" Grid.Column="1" Title="Change" HorizontalOptions="FillAndExpand" BackgroundColor="{x:Static local:Theme.PrimaryColor}" VerticalOptions="Center">
-          <Picker.Items>
-            <x:String>No Transform</x:String>
-            <x:String>% change</x:String>
-            <x:String>No Change</x:String>
-
-          </Picker.Items>
-        </Picker>
-       <Frame Grid.Row="1" Grid.Column="1" 
-               x:Name="overlay"
-                BackgroundColor="#404040"
-                Opacity="{Binding OverlayOpacity}"
-                HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
-          <Label x:Name="downloadingData"
-               FontFamily="{x:Static local:Theme.FontFamilyMedium}"
-                             FontSize="{x:Static local:Theme.FontSizeMicro}"
-                             TextColor="White"
-                        Text="{Binding StatusText}" />
-        </Frame>
-      
-      </Grid>
+      <local:ChartView x:Name="ChartView" Data="{Binding Data}" ShowOverlay="{Binding ShowOverlay}" Grid.Row="1"></local:ChartView>
       
       <ListView x:Name="OptionItemsView"
                 RowHeight="30"

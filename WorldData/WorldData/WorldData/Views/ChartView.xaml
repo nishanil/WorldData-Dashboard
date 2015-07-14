@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:WorldData;assembly=WorldData"
+             xmlns:controls="clr-namespace:Infragistics.XF.Controls;assembly=InfragisticsXF.Controls.Charts"
+             x:Class="WorldData.ChartView">
+  <Grid Padding="0"
+          RowSpacing="0"
+          ColumnSpacing="0"
+          VerticalOptions="FillAndExpand">
+
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="20" />
+
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="20"></ColumnDefinition>
+      <ColumnDefinition Width="*"></ColumnDefinition>
+      <ColumnDefinition Width="20"></ColumnDefinition>
+    </Grid.ColumnDefinitions>
+
+    <Label Grid.Row="0"
+           Grid.Column="1"
+           HorizontalOptions="CenterAndExpand"
+           VerticalOptions="CenterAndExpand"
+           FontFamily="{x:Static local:Theme.FontFamilyUltraLight}"
+           FontSize="{x:Static local:Theme.FontSizeLarge}"
+           TextColor="{x:Static local:Theme.PrimaryColor}"
+           Text="Growth (annual %)" />
+
+    <controls:XFDataChart x:Name="lineChart"
+                    Grid.Row="1" Grid.Column="1"
+                    HorizontalZoomable="true" VerticalZoomable="true" >
+      <controls:XFDataChart.Axes>
+        <controls:NumericYAxis x:Name="yAxis" IsLogarithmic="False" Label=" {}{0:#,} K" />
+        <controls:CategoryXAxis x:Name="xAxis" ItemsSource="{Binding}" Label="Date" />
+      </controls:XFDataChart.Axes>
+      <controls:XFDataChart.Series>
+
+        <controls:LineSeries ItemsSource="{Binding}" Title="Population"
+                       XAxis="{x:Reference xAxis}"
+                       YAxis="{x:Reference yAxis}"
+                       ValueMemberPath="Value" />
+
+      </controls:XFDataChart.Series>
+    </controls:XFDataChart>
+    
+    <Frame Grid.Row="1" Grid.Column="1"
+            x:Name="overlay"
+             BackgroundColor="#404040"
+             Opacity="{Binding OverlayOpacity}"
+             HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+      <Label x:Name="downloadingData"
+           FontFamily="{x:Static local:Theme.FontFamilyMedium}"
+                         FontSize="{x:Static local:Theme.FontSizeMicro}"
+                         TextColor="White"
+                    Text="" />
+    </Frame>
+   
+    <Grid Grid.Row="2" Grid.Column="1" ColumnSpacing="0" RowSpacing="0" Padding="10">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"></ColumnDefinition>
+        <ColumnDefinition Width="Auto"></ColumnDefinition>
+
+      </Grid.ColumnDefinitions>
+      <Label Grid.Column="0" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="Transformation:" FontFamily="{x:Static local:Theme.FontFamilyMedium}"
+                            FontSize="{x:Static local:Theme.FontSizeMedium}" TextColor="{x:Static local:Theme.PrimaryColor}"></Label>
+
+      <Picker Grid.Column="1" x:Name="transformationsPicker" HorizontalOptions="FillAndExpand" Title="select" BackgroundColor="{x:Static local:Theme.PrimaryColor}">
+         
+          <Picker.Items>
+          <x:String>No Transform</x:String>
+          <x:String>Change</x:String>
+          <x:String>% Change</x:String>
+          <x:String>Cumulative</x:String>
+
+        </Picker.Items>
+      </Picker>
+    </Grid>
+  </Grid>
+
+</ContentView>
