@@ -9,20 +9,20 @@ namespace WorldData
     {
 
         public static readonly BindableProperty DataProperty =
-                BindableProperty.Create<ChartView, PopulationData>(p => p.Data, null, propertyChanged: OnDataChanged);
+                BindableProperty.Create<ChartView, QuandlInfoData>(p => p.Data, null, propertyChanged: OnDataChanged);
 
-        private static void OnDataChanged(BindableObject bindable, PopulationData oldvalue, PopulationData newvalue)
+        private static void OnDataChanged(BindableObject bindable, QuandlInfoData oldvalue, QuandlInfoData newvalue)
         {
             ((ChartView)bindable).OnDataChanged(oldvalue, newvalue);
         }
 
-        public PopulationData Data
+        public QuandlInfoData Data
         {
-            get { return (PopulationData)GetValue(DataProperty); }
+            get { return (QuandlInfoData)GetValue(DataProperty); }
             set { SetValue(DataProperty, value); }
         }
 
-        public void OnDataChanged(PopulationData oldValue, PopulationData newValue)
+        public void OnDataChanged(QuandlInfoData oldValue, QuandlInfoData newValue)
         {
             PopulateChart(newValue);
         }
@@ -58,7 +58,7 @@ namespace WorldData
         }
 
 
-        private void PopulateChart(PopulationData newValue)
+        private void PopulateChart(QuandlInfoData newValue)
         {
             lineChart.Series[0].ItemsSource = newValue;
             var axis = lineChart.Axes.OfType<CategoryXAxis>().First();
@@ -68,7 +68,7 @@ namespace WorldData
         public ChartView()
         {
             InitializeComponent();
-
+            OnShowOverlayChanged(true, false);
             transformationsPicker.SelectedIndexChanged += (sender, args) =>
             {
 

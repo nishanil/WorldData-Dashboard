@@ -46,6 +46,7 @@
     <Compile Include="Repository\DataProvider.cs" />
     <Compile Include="Repository\WorldDataRepository.cs" />
     <Compile Include="Theme.cs" />
+    <Compile Include="ViewModels\CountryDetailsPageViewModel.cs" />
     <Compile Include="ViewModels\CountryInfoPageViewModel.cs" />
     <Compile Include="ViewModels\HomePageViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />

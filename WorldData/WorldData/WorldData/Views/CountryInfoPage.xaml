@@ -49,7 +49,7 @@
                FontFamily="{x:Static local:Theme.FontFamilyItalic}"
                FontSize="{x:Static local:Theme.FontSizeMicro}"
                TextColor="{x:Static local:Theme.PrimaryColor}"
-               Text="Data as of: 2013 " />
+               Text="PopulationData as of: 2013 " />
 
         <Label Grid.Row="2"
                        Grid.Column="1"
@@ -105,9 +105,9 @@
       </Grid>
 
       <!-- Data Chart -->
-      <local:ChartView x:Name="ChartView" Data="{Binding Data}" ShowOverlay="{Binding ShowOverlay}" Grid.Row="1"></local:ChartView>
+      <local:ChartView x:Name="ChartView" Data="{Binding PopulationData}" ShowOverlay="{Binding ShowOverlay}" Grid.Row="1"></local:ChartView>
       
-      <ListView x:Name="OptionItemsView"
+      <ListView x:Name="OthersListView"
                 RowHeight="30"
                 ItemsSource="{Binding ItemsSource}"
                 SeparatorColor="{x:Static local:Theme.PrimaryColor}"

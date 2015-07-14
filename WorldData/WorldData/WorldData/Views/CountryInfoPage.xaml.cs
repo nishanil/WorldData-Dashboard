@@ -15,21 +15,28 @@ namespace WorldData.Views
         public CountryInfoPage()
         {
             InitializeComponent();
-
-            // binding context set by calling page
-            // BindingContext = new CountryInfoPageViewModel();
-
             ChartView.TransformationsChanged += ChartView_TransformationsChanged;
+            
+            // deselect row
+            OthersListView.ItemTapped += (sender, args) =>
+            {
+                ((ListView)sender).SelectedItem = null;
+            };
+
+            OthersListView.ItemSelected += (sender, args) =>
+            {
+                if (args.SelectedItem == null) return; 
+                var detailsPage = new CountryDetailsPage
+                {
+                    BindingContext = new CountryDetailsPageViewModel {Data = ViewModel.LifeExpenctancyData}
+                };
+                Navigation.PushModalAsync(detailsPage, true);
+            };
         }
 
         void ChartView_TransformationsChanged(object sender, string e)
         {
-            //     <x:String>No Transform</x:String>
-            //  <x:String>Change</x:String>
-            //  <x:String>% Change</x:String>
-            //  <x:String>Cumulative</x:String>
-            // transformation=none|diff|rdiff|cumul|normalize
-            // https://www.quandl.com/help/api 
+            // More info: https://www.quandl.com/help/api 
             var trans = "none";
             switch (e)
             {

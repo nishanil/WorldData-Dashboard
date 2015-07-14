@@ -14,5 +14,10 @@ namespace WorldData.Views
         {
             InitializeComponent();
         }
+
+        private void Button_OnClicked(object sender, EventArgs e)
+        {
+            Navigation.PopModalAsync(true);
+        }
     }
 }

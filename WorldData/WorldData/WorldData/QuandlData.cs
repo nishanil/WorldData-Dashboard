@@ -18,7 +18,7 @@ namespace WorldData
         //public string[] ColumnNames { get; set; }
 
         //[JsonProperty("data")]
-        //public string[][] Data { get; set; }
+        //public string[][] PopulationData { get; set; }
 
         [JsonProperty("errors")]
         public Errors Errors { get; set; }
@@ -106,14 +106,14 @@ namespace WorldData
             return data;
         }
 
-        public static async Task<PopulationData> GetPopulationDataAsync(string authToken, string countryCode, string indicator,
+        public static async Task<QuandlInfoData> GetQuandlInfoDataAsync(string authToken, string countryCode, string indicator,
             string transformation = null, string collapse = null)
         {
             var data = await GetQuandlDataAsync(authToken, countryCode, indicator, transformation, collapse);
             if (data == null)
                 return null;
-            var populationData = new PopulationData {Country = data.Name};
-            populationData.AddRange(data.Data.Select(item => new PopulationDataItem() { Date = item[0].ToString(), Value = item[1].ToString().ToDouble() }));
+            var populationData = new QuandlInfoData {Country = data.Name};
+            populationData.AddRange(data.Data.Select(item => new QuandlInfoDataItem() { Date = item[0].ToString(), Value = item[1].ToString().ToDouble() }));
             return populationData;
         }
 
@@ -123,13 +123,13 @@ namespace WorldData
     {
     }
 
-    public class PopulationData
-        : List<PopulationDataItem>
+    public class QuandlInfoData
+        : List<QuandlInfoDataItem>
     {
         public string Country { get; set; }
     }
 
-    public class PopulationDataItem
+    public class QuandlInfoDataItem
     {
         public string Date { get; set; }
         public double Value { get; set; }

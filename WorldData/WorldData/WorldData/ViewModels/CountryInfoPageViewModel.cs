@@ -21,11 +21,10 @@ namespace WorldData.ViewModels
         public CountryInfoPageViewModel(Country selectedCountry)
         {
             
-            
             Country = selectedCountry;
 
             GetPopulation();
-
+            GetLifeExpectancy();
 
             ItemsSource = new List<Item>
             {
@@ -40,24 +39,48 @@ namespace WorldData.ViewModels
         public void GetPopulation( string transformation=null)
         {
             ShowOverlay = true;
-            QuandlData.GetPopulationDataAsync("yz1ovVBpJ6TC8viUCSLs", Country.AreaCode.ToLower(), "SP_POP_TOTL", transformation)
+            QuandlData.GetQuandlInfoDataAsync("yz1ovVBpJ6TC8viUCSLs", Country.AreaCode.ToLower(), "SP_POP_TOTL", transformation)
                 .ContinueWith((data) =>
                 {
-                    Data = data.Result;
+                    PopulationData = data.Result;
                     ShowOverlay = false;
                 });
         }
 
-        private PopulationData _data;
-        public PopulationData Data
+        public void GetLifeExpectancy(string transformation = null)
+        {
+
+            QuandlData.GetQuandlInfoDataAsync("yz1ovVBpJ6TC8viUCSLs", Country.AreaCode.ToLower(), "SP_DYN_LE00_IN", transformation)
+                .ContinueWith((data) =>
+                {
+                    LifeExpenctancyData = data.Result;
+                });
+        }
+
+        private QuandlInfoData _popdata;
+        public QuandlInfoData PopulationData
         {
             get
             {
-                return _data;
+                return _popdata;
             }
             set
             {
-                _data = value;
+                _popdata = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private QuandlInfoData _lifedata;
+        public QuandlInfoData LifeExpenctancyData
+        {
+            get
+            {
+                return _lifedata;
+            }
+            set
+            {
+                _lifedata = value;
                 RaisePropertyChanged();
             }
         }
@@ -77,8 +100,6 @@ namespace WorldData.ViewModels
             get { return showOverlay; }
             set { showOverlay = value; RaisePropertyChanged(); }
         }
-        
-        
 
     }
 

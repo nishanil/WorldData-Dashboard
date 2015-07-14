@@ -4,7 +4,7 @@
              xmlns:ig="clr-namespace:Infragistics.XF.Controls;assembly=InfragisticsXF.Controls.Charts"
              xmlns:local="clr-namespace:WorldData;assembly=WorldData"
              x:Class="WorldData.Views.HomePage"
-             Title="World Data">
+             Title="World PopulationData">
   <ContentPage.Resources>
     <ResourceDictionary>
       <local:BoolToColorConverter x:Key="BoolToColorConverter"></local:BoolToColorConverter>
@@ -123,7 +123,7 @@
                FontFamily="{x:Static local:Theme.FontFamilyItalic}"
                FontSize="{x:Static local:Theme.FontSizeMicro}"
                TextColor="{x:Static local:Theme.PrimaryColor}"
-               Text="Data as of: 2013 " />
+               Text="PopulationData as of: 2013 " />
       </Grid>
       <SearchBar Grid.Row="2" Placeholder="Search" BackgroundColor="{x:Static local:Theme.PrimaryColor}" x:Name="searchBar"></SearchBar>
       <ListView x:Name="CountryListView"
