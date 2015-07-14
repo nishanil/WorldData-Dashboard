@@ -23,6 +23,13 @@ namespace WorldData.Views
             chartView.SliceClick += chartView_SliceClick;
 
             searchBar.TextChanged += searchBar_TextChanged;
+
+            CountryListView.ItemSelected += (sender, args) =>
+            {
+                var selectedItem = vm.Countries.First(x => x.Name == (args.SelectedItem as Item).Name);
+                var countryInfoPage = new CountryInfoPage {BindingContext = new CountryInfoPageViewModel(selectedItem)};
+                Navigation.PushAsync(countryInfoPage, true);
+            };
         }
 
         void searchBar_TextChanged(object sender, TextChangedEventArgs e)

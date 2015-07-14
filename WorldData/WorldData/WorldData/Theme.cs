@@ -79,7 +79,7 @@ namespace WorldData
 
         public static double FontSizeMedium
         {
-            get { return Device.OnPlatform(iOS: 17, Android: Device.GetNamedSize(NamedSize.Medium, typeof(Label)), WinPhone: Device.GetNamedSize(NamedSize.Medium, typeof(Label))); }
+            get { return Device.OnPlatform(iOS: 17, Android: Device.GetNamedSize(NamedSize.Small, typeof(Label)), WinPhone: Device.GetNamedSize(NamedSize.Medium, typeof(Label))); }
 
         }
 

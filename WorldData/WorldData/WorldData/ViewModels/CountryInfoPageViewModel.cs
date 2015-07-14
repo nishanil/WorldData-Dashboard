@@ -3,21 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WorldData.Models;
 
 namespace WorldData.ViewModels
 {
     public class CountryInfoPageViewModel : ViewModelBase
     {
+        private Country country;
 
-        public CountryInfoPageViewModel()
+        public Country Country
+        {
+            get { return country; }
+            set { country = value; }
+        }
+        
+
+        public CountryInfoPageViewModel(Country selectedCountry)
         {
             OverlayOpacity = 0.5;
-            QuandlData.GetFinancialData("https://www.quandl.com/api/v1/datasets/WIKI/AAPL.json", "yz1ovVBpJ6TC8viUCSLs")
+            
+            Country = selectedCountry;
+
+            QuandlData.GetPopulationDataAsync("yz1ovVBpJ6TC8viUCSLs", selectedCountry.AreaCode.ToLower(), "SP_POP_TOTL")
                 .ContinueWith((data) =>
             {
                 StatusText = "";
                 Data = data.Result;
                 OverlayOpacity = 0;
+
+                
             });
 
 
@@ -31,8 +45,8 @@ namespace WorldData.ViewModels
 
         }
 
-        private FinancialData _data;
-        public FinancialData Data
+        private PopulationData _data;
+        public PopulationData Data
         {
             get
             {

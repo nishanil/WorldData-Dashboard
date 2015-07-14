@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,21 +11,93 @@ namespace WorldData
 {
     public class QuandlData
     {
+        //[JsonProperty("name")]
+        //public string Name { get; set; }
+
+        //[JsonProperty("column_names")]
+        //public string[] ColumnNames { get; set; }
+
+        //[JsonProperty("data")]
+        //public string[][] Data { get; set; }
+
+        [JsonProperty("errors")]
+        public Errors Errors { get; set; }
+
+        [JsonProperty("id")]
+        public int Id { get; set; }
+
+        [JsonProperty("source_name")]
+        public string SourceName { get; set; }
+
+        [JsonProperty("source_code")]
+        public string SourceCode { get; set; }
+
+        [JsonProperty("code")]
+        public string Code { get; set; }
+
         [JsonProperty("name")]
         public string Name { get; set; }
 
+        [JsonProperty("urlize_name")]
+        public string UrlizeName { get; set; }
+
+        [JsonProperty("display_url")]
+        public string DisplayUrl { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("updated_at")]
+        public DateTime UpdatedAt { get; set; }
+
+        [JsonProperty("frequency")]
+        public string Frequency { get; set; }
+
+        [JsonProperty("from_date")]
+        public string FromDate { get; set; }
+
+        [JsonProperty("to_date")]
+        public string ToDate { get; set; }
+
         [JsonProperty("column_names")]
-        public string[] ColumnNames { get; set; }
+        public IList<string> ColumnNames { get; set; }
+
+        [JsonProperty("private")]
+        public bool Private { get; set; }
+
+        [JsonProperty("type")]
+        public object Type { get; set; }
+
+        [JsonProperty("premium")]
+        public bool Premium { get; set; }
 
         [JsonProperty("data")]
-        public string[][] Data { get; set; }
+        public IList<IList<object>> Data { get; set; }
 
-        public async static Task<QuandlData> GetQuandlDataAsync(string uri, string authToken)
+        private static string quandlBaseUri =
+            @"https://www.quandl.com/api/v1/datasets/WORLDBANK/{0}_{1}.json";
+
+        public async static Task<QuandlData> GetQuandlDataAsync(string authToken, string countryCode, string indicator, string transformation = null, string collapse = null)
         {
+
+            if (string.IsNullOrEmpty(countryCode))
+                throw new ArgumentNullException("countryCode");
+
+            if (string.IsNullOrEmpty(indicator))
+                throw new ArgumentNullException("indicator");
+
+            var uri = string.Format(quandlBaseUri, countryCode, indicator);
+
             if (!String.IsNullOrEmpty(authToken))
             {
                 uri = uri + "?auth_token=" + authToken;
             }
+            if (!string.IsNullOrEmpty(transformation))
+                uri = uri + "&transformation=" + transformation;
+
+            if (!string.IsNullOrEmpty(collapse))
+                uri = uri + "&collapse=" + collapse;
+
             HttpClient client = new HttpClient();
             var result = await client.GetStringAsync(uri);
 
@@ -33,62 +106,34 @@ namespace WorldData
             return data;
         }
 
-        public async static Task<FinancialData> GetFinancialData(string uri, string authToken)
+        public static async Task<PopulationData> GetPopulationDataAsync(string authToken, string countryCode, string indicator,
+            string transformation = null, string collapse = null)
         {
-            var data = await GetQuandlDataAsync(uri, authToken);
-
-            var columns = data.ColumnNames.ToList();
-
-            var dateIndex = columns.IndexOf("Date");
-            var openIndex = columns.IndexOf("Open");
-            var highIndex = columns.IndexOf("High");
-            var lowIndex = columns.IndexOf("Low");
-            var closeIndex = columns.IndexOf("Close");
-
-            var finData = new FinancialData();
-            for (var i = data.Data.Length - 1; i >= 0; i--)
-            {
-                var item = new FinancialDataItem();
-                if (dateIndex >= 0)
-                {
-                    item.Date = (string)data.Data[i][dateIndex];
-                }
-                if (openIndex >= 0)
-                {
-                    item.Open = double.Parse(data.Data[i][openIndex]);
-                }
-                if (highIndex >= 0)
-                {
-                    item.High = double.Parse(data.Data[i][highIndex]);
-                }
-                if (lowIndex >= 0)
-                {
-                    item.Low = double.Parse(data.Data[i][lowIndex]);
-                }
-                if (closeIndex >= 0)
-                {
-                    item.Close = double.Parse(data.Data[i][closeIndex]);
-                }
-                finData.Add(item);
-            }
-
-            return finData;
+            var data = await GetQuandlDataAsync(authToken, countryCode, indicator, transformation, collapse);
+            if (data == null)
+                return null;
+            var populationData = new PopulationData {Country = data.Name};
+            populationData.AddRange(data.Data.Select(item => new PopulationDataItem() { Date = item[0].ToString(), Value = item[1].ToString().ToDouble() }));
+            return populationData;
         }
+
     }
 
-    public class FinancialData
-        : List<FinancialDataItem>
+    public class Errors
     {
-
     }
 
-    public class FinancialDataItem
+    public class PopulationData
+        : List<PopulationDataItem>
+    {
+        public string Country { get; set; }
+    }
+
+    public class PopulationDataItem
     {
         public string Date { get; set; }
-        public double Open { get; set; }
-        public double High { get; set; }
-        public double Low { get; set; }
-        public double Close { get; set; }
+        public double Value { get; set; }
+
 
     }
 }

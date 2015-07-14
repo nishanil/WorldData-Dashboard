@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Infragistics.XF.Controls;
 using WorldData.ViewModels;
 using Xamarin.Forms;
 
@@ -13,9 +14,11 @@ namespace WorldData.Views
         public CountryInfoPage()
         {
             InitializeComponent();
-            this.Title = "Country Info";
+         
+            // binding context set by calling page
+           // BindingContext = new CountryInfoPageViewModel();
 
-            BindingContext = new CountryInfoPageViewModel();
+         
         }
     }
 }

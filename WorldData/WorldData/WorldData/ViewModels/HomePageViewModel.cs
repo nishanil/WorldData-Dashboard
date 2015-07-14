@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using WorldData.Models;
 using WorldData.Repository;
 using Xamarin.Forms;
 
@@ -28,6 +29,7 @@ namespace WorldData.ViewModels
             set { itemsSource = value; RaisePropertyChanged(); }
         }
 
+        public List<Country> Countries { get; set; }
 
         public HomePageViewModel()
         {
@@ -38,9 +40,9 @@ namespace WorldData.ViewModels
 
             worldRepository.GetCountries().ContinueWith((list) =>
             {
-                var countries = list.Result;
+                Countries = list.Result;
                 var data = new ObservableCollection<DataItem>();
-                foreach (var item in countries)
+                foreach (var item in Countries)
                 {
                     ItemsSource.Add(new Item { Name = item.Name, Change = item.Chg1Y, IsChangePositive = item.IsChangePositive});
                 }
