@@ -63,7 +63,9 @@
    
     <Grid Grid.Row="2" Grid.Column="1" ColumnSpacing="0" RowSpacing="10">
       <Grid.RowDefinitions>
-        <RowDefinition></RowDefinition>
+        <RowDefinition Height="40"></RowDefinition>
+        <RowDefinition Height="30"></RowDefinition>
+
         <RowDefinition></RowDefinition>
 
       </Grid.RowDefinitions>
@@ -80,7 +82,7 @@
         </local:Options.Items>
       </local:Options>
     
-      <Picker Grid.Row="1" Grid.Column="1" WidthRequest="150" HorizontalOptions="EndAndExpand" x:Name="transformationsPicker"  Title="..." BackgroundColor="{x:Static local:Theme.PrimaryColor}">
+      <Picker Grid.Row="1" HeightRequest="30" Grid.Column="1" WidthRequest="150" HorizontalOptions="EndAndExpand" x:Name="transformationsPicker"  Title="..." BackgroundColor="{x:Static local:Theme.PrimaryColor}">
          
           <Picker.Items>
           <x:String>No Transform</x:String>

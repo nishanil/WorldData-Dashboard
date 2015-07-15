@@ -46,6 +46,7 @@ namespace WorldData.Droid.Renderers
                         Focusable = false,
                         Clickable = true,
                         Tag = this,
+                        //TODO: Fix this with a TitleProperty in Options
                         Text = "Frequency",
                     };
                     button.SetOnClickListener(OptionsListener.Instance);

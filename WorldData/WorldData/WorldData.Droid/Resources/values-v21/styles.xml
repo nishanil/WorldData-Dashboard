@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+<style name="AppTheme" parent="_AppTheme"></style>
+  
+ 
+  <style name="_AppTheme" parent="@android:style/Theme.Material.Light.DarkActionBar">
+    
+    <item name="android:colorPrimary">@color/apptheme_color</item>
+    <item name="android:statusBarColor">@color/apptheme_color</item>
+    
+  </style>
+  </resources>
