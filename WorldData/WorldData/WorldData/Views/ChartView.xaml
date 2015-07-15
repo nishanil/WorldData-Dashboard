@@ -61,16 +61,26 @@
                     Text="" />
     </Frame>
    
-    <Grid Grid.Row="2" Grid.Column="1" ColumnSpacing="0" RowSpacing="0" Padding="10">
+    <Grid Grid.Row="2" Grid.Column="1" ColumnSpacing="0" RowSpacing="10">
+      <Grid.RowDefinitions>
+        <RowDefinition></RowDefinition>
+        <RowDefinition></RowDefinition>
+
+      </Grid.RowDefinitions>
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*"></ColumnDefinition>
         <ColumnDefinition Width="Auto"></ColumnDefinition>
-
       </Grid.ColumnDefinitions>
-      <Label Grid.Column="0" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="Transformation:" FontFamily="{x:Static local:Theme.FontFamilyMedium}"
-                            FontSize="{x:Static local:Theme.FontSizeMedium}" TextColor="{x:Static local:Theme.PrimaryColor}"></Label>
-
-      <Picker Grid.Column="1" x:Name="transformationsPicker" HorizontalOptions="FillAndExpand" Title="select" BackgroundColor="{x:Static local:Theme.PrimaryColor}">
+      <local:Options x:Name="frequencyOptions" Grid.Row="0" Grid.ColumnSpan="2" HeightRequest="20" SelectedIndexChanged="Options_OnSelectedIndexChanged">
+        <local:Options.Items>
+          <x:String>Daily</x:String>
+          <x:String>Weekly</x:String>
+          <x:String>Monthly</x:String>
+          <x:String>Quarterly</x:String>
+        </local:Options.Items>
+      </local:Options>
+    
+      <Picker Grid.Row="1" Grid.Column="1" WidthRequest="150" HorizontalOptions="EndAndExpand" x:Name="transformationsPicker"  Title="..." BackgroundColor="{x:Static local:Theme.PrimaryColor}">
          
           <Picker.Items>
           <x:String>No Transform</x:String>
@@ -80,6 +90,9 @@
 
         </Picker.Items>
       </Picker>
+      <Label Grid.Row="1" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center" Text="Transformation:" FontFamily="{x:Static local:Theme.FontFamilyRegular}"
+                          FontSize="{x:Static local:Theme.FontSizeSmall}" TextColor="{x:Static local:Theme.PrimaryColor}"></Label>
+
     </Grid>
   </Grid>
 

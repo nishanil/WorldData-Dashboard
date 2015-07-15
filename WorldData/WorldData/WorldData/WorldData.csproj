@@ -36,6 +36,7 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="Converters\BoolToColorConverter.cs" />
+    <Compile Include="CustomControls\Options.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="HelperExtensions.cs" />
     <Compile Include="Models\Country.cs" />

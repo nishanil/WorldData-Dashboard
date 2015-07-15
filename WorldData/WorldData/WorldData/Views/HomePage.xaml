@@ -4,7 +4,7 @@
              xmlns:ig="clr-namespace:Infragistics.XF.Controls;assembly=InfragisticsXF.Controls.Charts"
              xmlns:local="clr-namespace:WorldData;assembly=WorldData"
              x:Class="WorldData.Views.HomePage"
-             Title="World PopulationData">
+             Title="World Population">
   <ContentPage.Resources>
     <ResourceDictionary>
       <local:BoolToColorConverter x:Key="BoolToColorConverter"></local:BoolToColorConverter>

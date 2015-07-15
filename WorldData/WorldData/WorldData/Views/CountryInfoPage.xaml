@@ -13,7 +13,7 @@
       <Grid.RowDefinitions>
         <RowDefinition Height="0.5*"></RowDefinition>
         <RowDefinition Height="2*"></RowDefinition>
-        <RowDefinition Height="*"></RowDefinition>
+        <RowDefinition Height="Auto"></RowDefinition>
       </Grid.RowDefinitions>
     
       <!-- Country Info Grid -->
@@ -108,7 +108,7 @@
       <local:ChartView x:Name="ChartView" Data="{Binding PopulationData}" ShowOverlay="{Binding ShowOverlay}" Grid.Row="1"></local:ChartView>
       
       <ListView x:Name="OthersListView"
-                RowHeight="30"
+                RowHeight="40"
                 ItemsSource="{Binding ItemsSource}"
                 SeparatorColor="{x:Static local:Theme.PrimaryColor}"
                 Grid.Row="2"
@@ -121,7 +121,7 @@
                 <Label Text="{Binding Name}" Font="{x:Static local:Theme.FontFamilyRegular}"
                        TextColor="{x:Static local:Theme.PrimaryColor}"
                        HorizontalOptions="Start"
-                       VerticalOptions="Fill" />
+                       VerticalOptions="CenterAndExpand" />
               </Grid>
             </ViewCell>
           </DataTemplate>

@@ -9,14 +9,15 @@ namespace WorldData.Views
 
         public CountryInfoPageViewModel ViewModel
         {
-            get { return (BindingContext as CountryInfoPageViewModel) ; }
+            get { return (BindingContext as CountryInfoPageViewModel); }
         }
-        
+
         public CountryInfoPage()
         {
             InitializeComponent();
             ChartView.TransformationsChanged += ChartView_TransformationsChanged;
-            
+            ChartView.FrequencyChanged += ChartView_FrequencyChanged;
+
             // deselect row
             OthersListView.ItemTapped += (sender, args) =>
             {
@@ -25,13 +26,39 @@ namespace WorldData.Views
 
             OthersListView.ItemSelected += (sender, args) =>
             {
-                if (args.SelectedItem == null) return; 
+                if (args.SelectedItem == null) return;
                 var detailsPage = new CountryDetailsPage
                 {
-                    BindingContext = new CountryDetailsPageViewModel {Data = ViewModel.LifeExpenctancyData}
+                    BindingContext = new CountryDetailsPageViewModel { Data = ViewModel.LifeExpenctancyData }
                 };
                 Navigation.PushModalAsync(detailsPage, true);
             };
+        }
+
+        void ChartView_FrequencyChanged(object sender, string e)
+        {
+            var freq = "none";
+
+
+            switch (e)
+            {
+                case "Daily":
+                    freq = "daily";
+                    break;
+                case "Weekly":
+                    freq = "weekly";
+                    break;
+                case "Monthly":
+                    freq = "monthly";
+                    break;
+                case "Quarterly":
+                    freq = "quarterly";
+                    break;
+                case "Annual":
+                    freq = "annual";
+                    break;
+            }
+            ViewModel.GetPopulation(frequency: freq);
         }
 
         void ChartView_TransformationsChanged(object sender, string e)
@@ -50,7 +77,7 @@ namespace WorldData.Views
                     trans = "cumul";
                     break;
             }
-            ViewModel.GetPopulation(trans);
+            ViewModel.GetPopulation(transformation: trans);
         }
     }
 }

@@ -79,5 +79,14 @@ namespace WorldData
         }
 
         public event EventHandler<string> TransformationsChanged;
+        public event EventHandler<string> FrequencyChanged;
+
+
+        private void Options_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selectedItem = frequencyOptions.Items[frequencyOptions.SelectedIndex];
+            if (FrequencyChanged != null)
+                FrequencyChanged(this, selectedItem);
+        }
     }
 }

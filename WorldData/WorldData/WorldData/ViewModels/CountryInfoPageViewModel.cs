@@ -36,10 +36,10 @@ namespace WorldData.ViewModels
 
         }
 
-        public void GetPopulation( string transformation=null)
+        public void GetPopulation(string transformation=null, string frequency=null)
         {
             ShowOverlay = true;
-            QuandlData.GetQuandlInfoDataAsync("yz1ovVBpJ6TC8viUCSLs", Country.AreaCode.ToLower(), "SP_POP_TOTL", transformation)
+            QuandlData.GetQuandlInfoDataAsync("yz1ovVBpJ6TC8viUCSLs", Country.AreaCode.ToLower(), "SP_POP_TOTL", transformation, collapse:frequency)
                 .ContinueWith((data) =>
                 {
                     PopulationData = data.Result;
