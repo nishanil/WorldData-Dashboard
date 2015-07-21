@@ -11,15 +11,7 @@ namespace WorldData
 {
     public class QuandlData
     {
-        //[JsonProperty("name")]
-        //public string Name { get; set; }
-
-        //[JsonProperty("column_names")]
-        //public string[] ColumnNames { get; set; }
-
-        //[JsonProperty("data")]
-        //public string[][] PopulationData { get; set; }
-
+     
         [JsonProperty("errors")]
         public Errors Errors { get; set; }
 
@@ -77,6 +69,7 @@ namespace WorldData
         private static string quandlBaseUri =
             @"https://www.quandl.com/api/v1/datasets/WORLDBANK/{0}_{1}.json";
 
+
         public async static Task<QuandlData> GetQuandlDataAsync(string authToken, string countryCode, string indicator, string transformation = null, string collapse = null)
         {
 
@@ -117,6 +110,12 @@ namespace WorldData
             return populationData;
         }
 
+        public static Task<QuandlInfoData> GetData(string country, string indicator = null, string transformation = null, string frequency = null)
+        {
+            var data = QuandlData.GetQuandlInfoDataAsync("yz1ovVBpJ6TC8viUCSLs", country, indicator,
+                transformation, collapse: frequency);
+            return data;
+        }
     }
 
     public class Errors

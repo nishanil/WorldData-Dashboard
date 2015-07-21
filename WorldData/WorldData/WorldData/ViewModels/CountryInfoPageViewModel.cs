@@ -22,76 +22,44 @@ namespace WorldData.ViewModels
         {
             
             Country = selectedCountry;
-
             GetPopulation();
-            GetLifeExpectancy();
-
-            ItemsSource = new List<Item>
+            ItemsSource = new List<OthersListViewItem>
             {
-                new Item{ Name = "Birth and Death"},
-                new Item{ Name = "Health and Disease"},
-                new Item{ Name = "Education"},
+                new OthersListViewItem{ Name = "Birth and Death"},
+                new OthersListViewItem{ Name = "Health and Disease"},
+                new OthersListViewItem{ Name = "Education"},
+                new OthersListViewItem{ Name = "Economic Activity"},
+
             };
+        }
 
 
+        private QuandlInfoData popdata;
+        public QuandlInfoData PopulationData
+        {
+            get
+            {
+                return popdata;
+            }
+            set
+            {
+                popdata = value;
+                RaisePropertyChanged();
+            }
         }
 
         public void GetPopulation(string transformation=null, string frequency=null)
         {
             ShowOverlay = true;
-            QuandlData.GetQuandlInfoDataAsync("yz1ovVBpJ6TC8viUCSLs", Country.AreaCode.ToLower(), "SP_POP_TOTL", transformation, collapse:frequency)
-                .ContinueWith((data) =>
-                {
-                    PopulationData = data.Result;
-                    ShowOverlay = false;
-                });
-        }
-
-        public void GetLifeExpectancy(string transformation = null)
-        {
-
-            QuandlData.GetQuandlInfoDataAsync("yz1ovVBpJ6TC8viUCSLs", Country.AreaCode.ToLower(), "SP_DYN_LE00_IN", transformation)
-                .ContinueWith((data) =>
-                {
-                    LifeExpenctancyData = data.Result;
-                });
-        }
-
-        private QuandlInfoData _popdata;
-        public QuandlInfoData PopulationData
-        {
-            get
+            QuandlData.GetData(country.AreaCode.ToLower(),"SP_POP_TOTL", transformation, frequency).ContinueWith((data) =>
             {
-                return _popdata;
-            }
-            set
-            {
-                _popdata = value;
-                RaisePropertyChanged();
-            }
+                PopulationData = data.Result;
+                ShowOverlay = false;
+            });
         }
 
-        private QuandlInfoData _lifedata;
-        public QuandlInfoData LifeExpenctancyData
-        {
-            get
-            {
-                return _lifedata;
-            }
-            set
-            {
-                _lifedata = value;
-                RaisePropertyChanged();
-            }
-        }
 
-        private List<Item> itemsSource;
-
-        public List<Item> ItemsSource
-        {
-            get { return itemsSource; }
-            set { itemsSource = value; }
-        }
+        public List<OthersListViewItem> ItemsSource { get; set; }
 
         private bool showOverlay;
 
@@ -103,5 +71,8 @@ namespace WorldData.ViewModels
 
     }
 
-   
+    public class OthersListViewItem
+    {
+        public string Name { get; set; }
+    }
 }

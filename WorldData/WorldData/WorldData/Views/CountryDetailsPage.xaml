@@ -28,7 +28,7 @@
         <RowDefinition Height="40"></RowDefinition>
 
       </Grid.RowDefinitions>
-    <local:ChartView x:Name="ChartView" ShowOverlay="False" Data="{Binding Data}"></local:ChartView>
+    <local:ChartView x:Name="ChartView" Data="{Binding Data}" ShowOverlay="{Binding ShowOverlay}"></local:ChartView>
       <Button Grid.Row="1" WidthRequest="150" HorizontalOptions="Center"  BackgroundColor="{x:Static local:Theme.PrimaryColor}" TextColor="White" Text="Close" Clicked="Button_OnClicked"></Button>
     </Grid>
   </ScrollView>

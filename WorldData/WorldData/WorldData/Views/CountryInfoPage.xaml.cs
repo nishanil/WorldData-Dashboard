@@ -6,7 +6,6 @@ namespace WorldData.Views
 {
     public partial class CountryInfoPage : ContentPage
     {
-
         public CountryInfoPageViewModel ViewModel
         {
             get { return (BindingContext as CountryInfoPageViewModel); }
@@ -23,23 +22,18 @@ namespace WorldData.Views
             {
                 ((ListView)sender).SelectedItem = null;
             };
-
             OthersListView.ItemSelected += (sender, args) =>
             {
-                if (args.SelectedItem == null) return;
-                var detailsPage = new CountryDetailsPage
-                {
-                    BindingContext = new CountryDetailsPageViewModel { Data = ViewModel.LifeExpenctancyData }
-                };
-                Navigation.PushModalAsync(detailsPage, true);
+                var selectedItem = args.SelectedItem as OthersListViewItem;
+                if (selectedItem == null) return;
+
+                Navigation.PushModalAsync(new CountryDetailsPage { BindingContext = new CountryDetailsPageViewModel(ViewModel.Country, selectedItem.Name) }, true);
             };
         }
 
         void ChartView_FrequencyChanged(object sender, string e)
         {
             var freq = "none";
-
-
             switch (e)
             {
                 case "Daily":
