@@ -164,8 +164,54 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="InfragisticsXF">
+      <HintPath>..\..\references\InfragisticsXF.dll</HintPath>
+    </Reference>
+    <Reference Include="InfragisticsXF.Controls.Barcodes">
+      <HintPath>..\..\references\InfragisticsXF.Controls.Barcodes.dll</HintPath>
+    </Reference>
+    <Reference Include="InfragisticsXF.Controls.Barcodes.WP">
+      <HintPath>..\..\references\InfragisticsXF.Controls.Barcodes.WP.dll</HintPath>
+    </Reference>
+    <Reference Include="InfragisticsXF.Controls.Charts">
+      <HintPath>..\..\references\InfragisticsXF.Controls.Charts.dll</HintPath>
+    </Reference>
+    <Reference Include="InfragisticsXF.Controls.Charts.WP">
+      <HintPath>..\..\references\InfragisticsXF.Controls.Charts.WP.dll</HintPath>
+    </Reference>
+    <Reference Include="InfragisticsXF.Controls.Gauges">
+      <HintPath>..\..\references\InfragisticsXF.Controls.Gauges.dll</HintPath>
+    </Reference>
+    <Reference Include="InfragisticsXF.Controls.Gauges.WP">
+      <HintPath>..\..\references\InfragisticsXF.Controls.Gauges.WP.dll</HintPath>
+    </Reference>
+    <Reference Include="InfragisticsXF.Controls.Grids">
+      <HintPath>..\..\references\InfragisticsXF.Controls.Grids.dll</HintPath>
+    </Reference>
+    <Reference Include="InfragisticsXF.Controls.Grids.WP">
+      <HintPath>..\..\references\InfragisticsXF.Controls.Grids.WP.dll</HintPath>
+    </Reference>
+    <Reference Include="InfragisticsXF.WP">
+      <HintPath>..\..\references\InfragisticsXF.WP.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Phone.Controls.Toolkit">
       <HintPath>..\..\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\sl4-windowsphone71\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\sl4-windowsphone71\System.Net.Http.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\sl4-windowsphone71\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -199,5 +245,10 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\Xamarin.Forms.1.4.2.6359\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.1.4.2.6359\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
+  </Target>
+  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
   </Target>
 </Project>

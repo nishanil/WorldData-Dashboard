@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Infragistics.XF;
 using Infragistics.XF.Controls;
 using WorldData.ViewModels;
 using Xamarin.Forms;
@@ -21,7 +22,7 @@ namespace WorldData.Views
             BindingContext = vm =  new HomePageViewModel();
             chartView = (pieChart as XFPieChart);
             chartView.SliceClick += chartView_SliceClick;
-
+            chartView.FontBrush = new SolidColorBrush(Theme.DefaultTextColor);
             searchBar.TextChanged += searchBar_TextChanged;
 
             CountryListView.ItemTapped += (sender, args) =>

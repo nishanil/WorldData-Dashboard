@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:WorldData;assembly=WorldData"
              xmlns:controls="clr-namespace:Infragistics.XF.Controls;assembly=InfragisticsXF.Controls.Charts"
              x:Class="WorldData.ChartView">
+  
   <Grid Padding="0"
           RowSpacing="0"
           ColumnSpacing="0"
@@ -26,15 +27,18 @@
     
 
     <controls:XFDataChart x:Name="lineChart"
+                         
                     Grid.Row="1" Grid.Column="1"
                     HorizontalZoomable="true" VerticalZoomable="true" >
       <controls:XFDataChart.Axes>
-        <controls:NumericYAxis x:Name="yAxis" IsLogarithmic="False" Label=" {}{0:#,} K" />
-        <controls:CategoryXAxis x:Name="xAxis" ItemsSource="{Binding}" Label="Date" />
+        <controls:NumericYAxis x:Name="yAxis" IsLogarithmic="False" LabelFontFamily="{x:Static local:Theme.FontFamilyMedium}"
+                              LabelFontSize="{x:Static local:Theme.FontSizeMicro}" />
+        <controls:CategoryXAxis x:Name="xAxis" ItemsSource="{Binding}" Label="Date" LabelFontFamily="{x:Static local:Theme.FontFamilyMedium}"
+                              LabelFontSize="{x:Static local:Theme.FontSizeXMicro}" />
       </controls:XFDataChart.Axes>
       <controls:XFDataChart.Series>
 
-        <controls:LineSeries ItemsSource="{Binding}"
+        <controls:LineSeries  ItemsSource="{Binding}"
                        XAxis="{x:Reference xAxis}"
                        YAxis="{x:Reference yAxis}"
                        ValueMemberPath="Value" />

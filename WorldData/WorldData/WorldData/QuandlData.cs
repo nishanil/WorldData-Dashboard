@@ -107,7 +107,7 @@ namespace WorldData
             if (data == null)
                 return null;
             var quandlInfoData = new QuandlInfoData {Country = data.Name, DataName = data.Name};
-            quandlInfoData.AddRange(data.Data.Select(item => new QuandlInfoDataItem() { Date = item[0].ToString(), Value = item[1].ToString().ToDouble() }));
+            quandlInfoData.AddRange(data.Data.Select(item => new QuandlInfoDataItem() { Date = Convert.ToDateTime(item[0].ToString()), Value = item[1].ToString().ToDouble() }));
             return quandlInfoData;
         }
     }
@@ -125,7 +125,7 @@ namespace WorldData
 
     public class QuandlInfoDataItem
     {
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
         public double Value { get; set; }
 
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using Infragistics.XF.Controls;
 using Xamarin.Forms;
@@ -63,6 +64,7 @@ namespace WorldData
             lineChart.Series[0].ItemsSource = newValue;
             var axis = lineChart.Axes.OfType<CategoryXAxis>().First();
             axis.ItemsSource = newValue;
+            
         }
 
         public ChartView()
@@ -76,6 +78,24 @@ namespace WorldData
                 if (TransformationsChanged != null)
                     TransformationsChanged(this, selectedItem);
             };
+
+            yAxis.FormatLabel += yAxis_FormatLabel;
+            xAxis.FormatLabel += xAxis_FormatLabel;
+        }
+
+        string xAxis_FormatLabel(object sender, object item)
+        {
+            var value = (item as QuandlInfoDataItem).Date;
+            return value.ToString("yyyy-MMM");
+        }
+
+        string yAxis_FormatLabel(object sender, object item)
+        {
+            var value = (double)item;
+            if (value > 999)
+                return value.ToString("#,##0,K", CultureInfo.InvariantCulture);
+            else
+                return value.ToString(".0#", CultureInfo.InvariantCulture);
         }
 
         public event EventHandler<string> TransformationsChanged;

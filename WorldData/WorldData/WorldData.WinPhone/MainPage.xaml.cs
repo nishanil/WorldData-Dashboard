@@ -16,9 +16,13 @@ namespace WorldData.WinPhone
         {
             InitializeComponent();
             SupportedOrientations = SupportedPageOrientation.PortraitOrLandscape;
-            //TODO: Uncomment when IG errors are fixed.
-            //global::Xamarin.Forms.Forms.Init();
-            //LoadApplication(new WorldData.App());
+         
+            global::Xamarin.Forms.Forms.Init();
+            Infragistics.XF.Initializers.Barcodes.Init();
+            Infragistics.XF.Initializers.Charts.Init();
+            Infragistics.XF.Initializers.Gauges.Init();
+            Infragistics.XF.Initializers.Grids.Init();
+            LoadApplication(new WorldData.App());
         }
     }
 }

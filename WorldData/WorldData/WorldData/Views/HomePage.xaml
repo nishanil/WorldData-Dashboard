@@ -4,10 +4,33 @@
              xmlns:ig="clr-namespace:Infragistics.XF.Controls;assembly=InfragisticsXF.Controls.Charts"
              xmlns:local="clr-namespace:WorldData;assembly=WorldData"
              x:Class="WorldData.Views.HomePage"
-             Title="World Population">
+             xmlns:igc="clr-namespace:Infragistics.XF;assembly=InfragisticsXF"
+             Title="World Population" BackgroundColor="White">
   <ContentPage.Resources>
     <ResourceDictionary>
       <local:BoolToColorConverter x:Key="BoolToColorConverter"></local:BoolToColorConverter>
+      <igc:BrushCollection x:Key="SliceBrushes">
+        <igc:SolidColorBrush Color="#4DB6AC" />
+        <igc:SolidColorBrush Color="#4DD0E1" />
+        <igc:SolidColorBrush Color="#7986CB" />
+        <igc:SolidColorBrush Color="#FFF176" />
+        <igc:SolidColorBrush Color="#A5D6A7" />
+        <igc:SolidColorBrush Color="#FFA726" />
+
+
+
+      </igc:BrushCollection>
+      <igc:BrushCollection x:Key="OutlineBrushes">
+        <igc:SolidColorBrush Color="#4DB6AC" />
+        <igc:SolidColorBrush Color="#4DD0E1" />
+        <igc:SolidColorBrush Color="#7986CB" />
+        <igc:SolidColorBrush Color="#FFF176" />
+        <igc:SolidColorBrush Color="#A5D6A7" />
+        <igc:SolidColorBrush Color="#FFA726" />
+
+
+
+      </igc:BrushCollection>
     </ResourceDictionary>
   </ContentPage.Resources>
   <ScrollView>
@@ -26,6 +49,10 @@
                    HorizontalOptions="FillAndExpand"
                    VerticalOptions="FillAndExpand">
         <ig:XFPieChart x:Name="pieChart"
+                       Brushes="{StaticResource SliceBrushes}"
+                       Outlines="{StaticResource OutlineBrushes}"
+                       FontFamily="{x:Static local:Theme.FontFamilyMedium}"
+                       FontSize="{x:Static local:Theme.FontSizeMicro}"
                        HeightRequest="250" 
                        InnerExtent="0" 
                        RadiusFactor="0.7"
