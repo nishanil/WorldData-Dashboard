@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq;
+using Infragistics.XF;
 using Infragistics.XF.Controls;
 using Xamarin.Forms;
 
@@ -81,6 +82,12 @@ namespace WorldData
 
             yAxis.FormatLabel += yAxis_FormatLabel;
             xAxis.FormatLabel += xAxis_FormatLabel;
+
+            var series = lineChart.Series.OfType<LineSeries>().First();
+            series.Brush = new SolidColorBrush(Color.FromHex("#009688"));
+            series.Thickness = 1;
+            series.MarkerBrush = new SolidColorBrush(Color.FromHex("#7C4DFF"));
+            series.MarkerOutline = new SolidColorBrush(Color.FromHex("#7C4DFF"));
         }
 
         string xAxis_FormatLabel(object sender, object item)
