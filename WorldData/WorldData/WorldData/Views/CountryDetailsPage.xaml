@@ -24,12 +24,20 @@
             ColumnSpacing="0"
             VerticalOptions="FillAndExpand">
       <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"></RowDefinition>
         <RowDefinition Height="*"></RowDefinition>
         <RowDefinition Height="40"></RowDefinition>
 
       </Grid.RowDefinitions>
-    <local:ChartView x:Name="ChartView" Data="{Binding Data}" ShowOverlay="{Binding ShowOverlay}"></local:ChartView>
-      <Button Grid.Row="1" WidthRequest="150" HorizontalOptions="Center"  BackgroundColor="{x:Static local:Theme.PrimaryColor}" TextColor="White" Text="Close" Clicked="Button_OnClicked"></Button>
+      <Label Grid.Row="0"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"
+                FontFamily="{x:Static local:Theme.FontFamilyUltraLight}"
+                FontSize="{x:Static local:Theme.FontSizeLarge}"
+                TextColor="{x:Static local:Theme.PrimaryColor}"
+                Text="{Binding ChartTitle}" />
+    <local:ChartView Grid.Row="1" x:Name="ChartView" Data="{Binding Data}" ShowOverlay="{Binding ShowOverlay}"></local:ChartView>
+      <Button Grid.Row="2" WidthRequest="150" HorizontalOptions="Center"  BackgroundColor="{x:Static local:Theme.PrimaryColor}" TextColor="White" Text="Close" Clicked="Button_OnClicked"></Button>
     </Grid>
   </ScrollView>
 </ContentPage>

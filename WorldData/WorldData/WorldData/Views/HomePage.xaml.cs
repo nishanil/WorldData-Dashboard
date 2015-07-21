@@ -31,8 +31,8 @@ namespace WorldData.Views
 
             CountryListView.ItemSelected += (sender, args) =>
             {
-                if (args.SelectedItem == null) return; 
-                var selectedItem = vm.Countries.First(x => x.Name == (args.SelectedItem as Item).Name);
+                if (args.SelectedItem == null) return;
+                var selectedItem = vm.Countries.First(x => x.Name == (args.SelectedItem as CountryItem).Name);
                 var countryInfoPage = new CountryInfoPage {BindingContext = new CountryInfoPageViewModel(selectedItem)};
                 Navigation.PushAsync(countryInfoPage, true);
             };

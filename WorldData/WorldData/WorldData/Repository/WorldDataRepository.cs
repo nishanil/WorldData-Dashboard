@@ -36,7 +36,11 @@ namespace WorldData.Repository
                         Chg1Y = csv[i, "1Y Chg"],
                         Year5 = csv[i, "5Y Ago"],
                         Year10 = csv[i, "10Y Ago"],
-                        Year25 = csv[i, "25Y Ago"]
+                        Year25 = csv[i, "25Y Ago"],
+                        LifeExpectancy = csv[i, "Life Expectancy"],
+                        HealthExpenditure = csv[i, "Health Expenditure"],
+                        AdultLiteracyRate = csv[i, "Adult Literacy Rate"],
+                         
                     };
 
                     countries.Add(country);

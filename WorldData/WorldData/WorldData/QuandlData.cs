@@ -69,6 +69,7 @@ namespace WorldData
         private static string quandlBaseUri =
             @"https://www.quandl.com/api/v1/datasets/WORLDBANK/{0}_{1}.json";
 
+        private static string authkey = "yz1ovVBpJ6TC8viUCSLs";
 
         public async static Task<QuandlData> GetQuandlDataAsync(string authToken, string countryCode, string indicator, string transformation = null, string collapse = null)
         {
@@ -99,22 +100,15 @@ namespace WorldData
             return data;
         }
 
-        public static async Task<QuandlInfoData> GetQuandlInfoDataAsync(string authToken, string countryCode, string indicator,
+        public static async Task<QuandlInfoData> GetData(string countryCode, string indicator,
             string transformation = null, string collapse = null)
         {
-            var data = await GetQuandlDataAsync(authToken, countryCode, indicator, transformation, collapse);
+            var data = await GetQuandlDataAsync(authkey, countryCode, indicator, transformation, collapse);
             if (data == null)
                 return null;
-            var populationData = new QuandlInfoData {Country = data.Name};
-            populationData.AddRange(data.Data.Select(item => new QuandlInfoDataItem() { Date = item[0].ToString(), Value = item[1].ToString().ToDouble() }));
-            return populationData;
-        }
-
-        public static Task<QuandlInfoData> GetData(string country, string indicator = null, string transformation = null, string frequency = null)
-        {
-            var data = QuandlData.GetQuandlInfoDataAsync("yz1ovVBpJ6TC8viUCSLs", country, indicator,
-                transformation, collapse: frequency);
-            return data;
+            var quandlInfoData = new QuandlInfoData {Country = data.Name, DataName = data.Name};
+            quandlInfoData.AddRange(data.Data.Select(item => new QuandlInfoDataItem() { Date = item[0].ToString(), Value = item[1].ToString().ToDouble() }));
+            return quandlInfoData;
         }
     }
 
@@ -125,6 +119,7 @@ namespace WorldData
     public class QuandlInfoData
         : List<QuandlInfoDataItem>
     {
+        public string DataName { get; set; }
         public string Country { get; set; }
     }
 

@@ -94,8 +94,30 @@ namespace WorldData.Models
             set { year25 = value; RaisePropertyChanged(); }
         }
 
+        private string lifeExpectancy;
 
+        public string LifeExpectancy
+        {
+            get { return lifeExpectancy; }
+            set { lifeExpectancy = value; RaisePropertyChanged(); }
+        }
 
+        private string healthExpenditure;
+
+        public string HealthExpenditure
+        {
+            get { return healthExpenditure; }
+            set { healthExpenditure = value; RaisePropertyChanged(); }
+        }
+
+        private string adultLiteracyRate;
+
+        public string AdultLiteracyRate
+        {
+            get { return adultLiteracyRate; }
+            set { adultLiteracyRate = value; RaisePropertyChanged(); }
+        }
+        
         
     }
 }

@@ -12,6 +12,8 @@
       VerticalOptions="FillAndExpand">
       <Grid.RowDefinitions>
         <RowDefinition Height="0.5*"></RowDefinition>
+        <RowDefinition Height="Auto"></RowDefinition>
+
         <RowDefinition Height="2*"></RowDefinition>
         <RowDefinition Height="Auto"></RowDefinition>
       </Grid.RowDefinitions>
@@ -30,15 +32,13 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="20"></ColumnDefinition>
+          <ColumnDefinition Width="5"></ColumnDefinition>
 
           <ColumnDefinition Width="2*"></ColumnDefinition>
           <ColumnDefinition Width="*"></ColumnDefinition>
           <ColumnDefinition Width="2*"></ColumnDefinition>
           <ColumnDefinition Width="*"></ColumnDefinition>
-
-          <ColumnDefinition Width="20"></ColumnDefinition>
-
+          <ColumnDefinition Width="5"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <Label Grid.Row="1"
@@ -49,7 +49,7 @@
                FontFamily="{x:Static local:Theme.FontFamilyItalic}"
                FontSize="{x:Static local:Theme.FontSizeMicro}"
                TextColor="{x:Static local:Theme.PrimaryColor}"
-               Text="PopulationData as of: 2013 " />
+               Text="Data as of: 2013 " />
 
         <Label Grid.Row="2"
                        Grid.Column="1"
@@ -58,7 +58,7 @@
                        FontFamily="{x:Static local:Theme.FontFamilyMedium}"
                        FontSize="{x:Static local:Theme.FontSizeMicro}"
                        TextColor="{x:Static local:Theme.DefaultTextColor}"
-                       Text="Average Income: " />
+                       Text="Avg. Health Expense" />
         <Label Grid.Row="2"
                Grid.Column="2"
                HorizontalOptions="Start"
@@ -66,7 +66,7 @@
                FontFamily="{x:Static local:Theme.FontFamilyUltraLight}"
                FontSize="{x:Static local:Theme.FontSizeMedium}"
                TextColor="{x:Static local:Theme.DefaultTextColor}"
-               Text="90" />
+               Text="{Binding AverageHealthExpenditure}" />
         <Label Grid.Row="2"
                Grid.Column="3"
                HorizontalOptions="End"
@@ -74,7 +74,7 @@
                FontFamily="{x:Static local:Theme.FontFamilyMedium}"
                FontSize="{x:Static local:Theme.FontSizeMicro}"
                TextColor="{x:Static local:Theme.DefaultTextColor}"
-               Text="Life Expectancy: " />
+               Text="Life Expectancy " />
         <Label Grid.Row="2"
                Grid.Column="4"
                HorizontalOptions="Start"
@@ -82,7 +82,7 @@
                FontFamily="{x:Static local:Theme.FontFamilyUltraLight}"
                FontSize="{x:Static local:Theme.FontSizeMedium}"
                TextColor="{x:Static local:Theme.DefaultTextColor}"
-               Text="76.6" />
+               Text="{Binding LifeExpectancy}" />
         
         <Label Grid.Row="3"
                Grid.Column="1"
@@ -91,7 +91,7 @@
                FontFamily="{x:Static local:Theme.FontFamilyMedium}"
                FontSize="{x:Static local:Theme.FontSizeMicro}"
                TextColor="{x:Static local:Theme.DefaultTextColor}"
-               Text="Adult Literacy Rate: " />
+               Text="Adult Literacy Rate " />
         <Label Grid.Row="3"
                Grid.Column="2"
                HorizontalOptions="Start"
@@ -99,19 +99,25 @@
                FontFamily="{x:Static local:Theme.FontFamilyUltraLight}"
                FontSize="{x:Static local:Theme.FontSizeMedium}"
                TextColor="{x:Static local:Theme.DefaultTextColor}"
-               Text="6,132" />
+               Text="{Binding AdultLiteracyRate}" />
 
 
       </Grid>
-
+      <Label Grid.Row="1"
+                 HorizontalOptions="CenterAndExpand"
+                 VerticalOptions="CenterAndExpand"
+                 FontFamily="{x:Static local:Theme.FontFamilyUltraLight}"
+                 FontSize="{x:Static local:Theme.FontSizeLarge}"
+                 TextColor="{x:Static local:Theme.PrimaryColor}"
+                 Text="Population (Total)" />
       <!-- Data Chart -->
-      <local:ChartView x:Name="ChartView" Data="{Binding PopulationData}" ShowOverlay="{Binding ShowOverlay}" Grid.Row="1"></local:ChartView>
+      <local:ChartView x:Name="ChartView" Data="{Binding PopulationData}" ShowOverlay="{Binding ShowOverlay}" Grid.Row="2"></local:ChartView>
       
       <ListView x:Name="OthersListView"
                 RowHeight="40"
                 ItemsSource="{Binding ItemsSource}"
                 SeparatorColor="{x:Static local:Theme.PrimaryColor}"
-                Grid.Row="2"
+                Grid.Row="3"
                 HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
         <ListView.ItemTemplate>
           <DataTemplate>

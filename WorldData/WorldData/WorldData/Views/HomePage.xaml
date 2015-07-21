@@ -82,7 +82,7 @@
                FontFamily="{x:Static local:Theme.FontFamilyUltraLight}"
                FontSize="{x:Static local:Theme.FontSizeMedium}"
                TextColor="Black"
-               Text="6,132 m" />
+               Text="{Binding WorldPopulation}" />
         <Label Grid.Row="2"
                Grid.Column="0"
                HorizontalOptions="End"
@@ -98,8 +98,8 @@
                FontFamily="{x:Static local:Theme.FontFamilyUltraLight}"
                FontSize="{x:Static local:Theme.FontSizeMedium}"
                TextColor="Black"
-               Text="76.6 m" />
-        <Label Grid.Row="1"
+               Text="{Binding LifeExpectancy}" />
+        <!--<Label Grid.Row="1"
                Grid.Column="2"
                HorizontalOptions="End"
                VerticalOptions="CenterAndExpand"
@@ -114,7 +114,7 @@
                FontFamily="{x:Static local:Theme.FontFamilyUltraLight}"
                FontSize="{x:Static local:Theme.FontSizeMedium}"
                TextColor="Black"
-               Text="6,132" />
+               Text="6,132" />-->
         <Label Grid.Row="2"
                Grid.Column="2"
                Grid.ColumnSpan="2"
@@ -123,7 +123,7 @@
                FontFamily="{x:Static local:Theme.FontFamilyItalic}"
                FontSize="{x:Static local:Theme.FontSizeMicro}"
                TextColor="{x:Static local:Theme.PrimaryColor}"
-               Text="PopulationData as of: 2013 " />
+               Text="Data as of: 2013 " />
       </Grid>
       <SearchBar Grid.Row="2" Placeholder="Search" BackgroundColor="{x:Static local:Theme.PrimaryColor}" x:Name="searchBar"></SearchBar>
       <ListView x:Name="CountryListView"

@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using WorldData.Models;
 using WorldData.Repository;
-using Xamarin.Forms;
 
 namespace WorldData.ViewModels
 {
@@ -21,12 +17,28 @@ namespace WorldData.ViewModels
             set { data = value; RaisePropertyChanged(); }
         }
 
-        private ObservableCollection<Item> itemsSource;
+        private ObservableCollection<CountryItem> itemsSource;
 
-        public ObservableCollection<Item> ItemsSource
+        public ObservableCollection<CountryItem> ItemsSource
         {
             get { return itemsSource; }
             set { itemsSource = value; RaisePropertyChanged(); }
+        }
+
+        private string worldPopulation;
+
+        public string WorldPopulation
+        {
+            get { return worldPopulation; }
+            set { worldPopulation = value; RaisePropertyChanged(); }
+        }
+
+        private string lifeExpectancy;
+
+        public string LifeExpectancy
+        {
+            get { return lifeExpectancy; }
+            set { lifeExpectancy = value; RaisePropertyChanged(); }
         }
 
         public List<Country> Countries { get; set; }
@@ -36,34 +48,45 @@ namespace WorldData.ViewModels
             var worldRepository = new WorldDataRepository();
 
             Data = new ObservableCollection<DataItem>();
-            ItemsSource = new ObservableCollection<Item>();
+            ItemsSource = new ObservableCollection<CountryItem>();
 
-            worldRepository.GetCountries().ContinueWith((list) =>
+            worldRepository.GetCountries().ContinueWith(list =>
             {
                 Countries = list.Result;
-                var data = new ObservableCollection<DataItem>();
+                var dataItems = new ObservableCollection<DataItem>();
                 foreach (var item in Countries)
                 {
-                    ItemsSource.Add(new Item { Name = item.Name, Change = item.Chg1Y, IsChangePositive = item.IsChangePositive});
+                    var countryItem = new CountryItem
+                    {
+                        Name = item.Name,
+                        Change = item.Chg1Y,
+                        IsChangePositive = item.IsChangePositive
+                    };
+                    double val = 0.0;
+                    double.TryParse(item.LifeExpectancy, out val);
+                    countryItem.LifeExpectancy = val;
+                    ItemsSource.Add(countryItem);
+
                 }
                 foreach (var region in worldRepository.CountriesByRegion)
                 {
-                    var dataItem = new DataItem();
-                    dataItem.Label = region.Key;
-                    dataItem.Level = region.Value.Sum(x => x.Level.ToDouble());
-                    data.Add(dataItem);
+                    var dataItem = new DataItem {Label = region.Key, Level = region.Value.Sum(x => x.Level.ToDouble())};
+                    dataItems.Add(dataItem);
                 }
-                Data = data;
+                WorldPopulation = dataItems.Sum(l => l.Level * 1000).ToString("#,##0,,,.B", CultureInfo.InvariantCulture);
+                LifeExpectancy = ItemsSource.Average(x => x.LifeExpectancy).ToString("00.00", CultureInfo.InvariantCulture);
+                Data = dataItems;
             });
 
         }
     }
 
-    public class Item
+    public class CountryItem
     {
         public string Name { get; set; }
         public string Change { get; set; }
 
+        public double LifeExpectancy { get; set; }
         public bool IsChangePositive { get; set; }
 
     }

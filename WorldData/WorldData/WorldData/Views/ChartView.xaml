@@ -23,14 +23,7 @@
       <ColumnDefinition Width="20"></ColumnDefinition>
     </Grid.ColumnDefinitions>
 
-    <Label Grid.Row="0"
-           Grid.Column="1"
-           HorizontalOptions="CenterAndExpand"
-           VerticalOptions="CenterAndExpand"
-           FontFamily="{x:Static local:Theme.FontFamilyUltraLight}"
-           FontSize="{x:Static local:Theme.FontSizeLarge}"
-           TextColor="{x:Static local:Theme.PrimaryColor}"
-           Text="Growth (annual %)" />
+    
 
     <controls:XFDataChart x:Name="lineChart"
                     Grid.Row="1" Grid.Column="1"
@@ -41,7 +34,7 @@
       </controls:XFDataChart.Axes>
       <controls:XFDataChart.Series>
 
-        <controls:LineSeries ItemsSource="{Binding}" Title="Population"
+        <controls:LineSeries ItemsSource="{Binding}"
                        XAxis="{x:Reference xAxis}"
                        YAxis="{x:Reference yAxis}"
                        ValueMemberPath="Value" />

@@ -31,8 +31,15 @@ namespace WorldData.ViewModels
             get { return selectedItem; }
             set { selectedItem = value; RaisePropertyChanged(); }
         }
-        
 
+        private string chartTitle;
+
+        public string ChartTitle
+        {
+            get { return chartTitle; }
+            set { chartTitle = value; RaisePropertyChanged(); }
+        }
+        
         public CountryDetailsPageViewModel(Country selectedCountry, string selectedItem)
         {
             country = selectedCountry;
@@ -79,6 +86,7 @@ namespace WorldData.ViewModels
             QuandlData.GetData(country.AreaCode.ToLower(), "SP_DYN_LE00_IN", transformation, frequency).ContinueWith((data) =>
             {
                 Data = data.Result;
+                ChartTitle = Data.DataName;
                 ShowOverlay = false;
             });
         }
@@ -89,6 +97,7 @@ namespace WorldData.ViewModels
             QuandlData.GetData(country.AreaCode.ToLower(), "SH_XPD_PCAP_PP_KD", transformation, frequency).ContinueWith((data) =>
             {
                 Data = data.Result;
+                ChartTitle = Data.DataName;
                 ShowOverlay = false;
             });
         }
@@ -99,6 +108,7 @@ namespace WorldData.ViewModels
             QuandlData.GetData(country.AreaCode.ToLower(), "SE_ADT_LITR_ZS", transformation, frequency).ContinueWith((data) =>
             {
                 Data = data.Result;
+                ChartTitle = Data.DataName;
                 ShowOverlay = false;
             });
         }
@@ -109,6 +119,7 @@ namespace WorldData.ViewModels
             QuandlData.GetData(country.AreaCode.ToLower(), "NY_GDP_PCAP_PP_CD", transformation, frequency).ContinueWith((data) =>
             {
                 Data = data.Result;
+                ChartTitle = Data.DataName;
                 ShowOverlay = false;
             });
         }

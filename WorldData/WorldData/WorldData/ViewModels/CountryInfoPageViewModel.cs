@@ -51,7 +51,7 @@ namespace WorldData.ViewModels
         public void GetPopulation(string transformation=null, string frequency=null)
         {
             ShowOverlay = true;
-            QuandlData.GetData(country.AreaCode.ToLower(),"SP_POP_TOTL", transformation, frequency).ContinueWith((data) =>
+            QuandlData.GetData(country.AreaCode.ToLower(),"SP_POP_TOTL", transformation, frequency).ContinueWith(data =>
             {
                 PopulationData = data.Result;
                 ShowOverlay = false;
@@ -68,6 +68,23 @@ namespace WorldData.ViewModels
             get { return showOverlay; }
             set { showOverlay = value; RaisePropertyChanged(); }
         }
+
+        public string AdultLiteracyRate
+        {
+            get { return country.AdultLiteracyRate; }
+          
+        }
+
+        public string AverageHealthExpenditure
+        {
+            get { return country.HealthExpenditure;  }
+        }
+
+        public string LifeExpectancy
+        {
+            get { return country.LifeExpectancy; }
+        }
+        
 
     }
 
