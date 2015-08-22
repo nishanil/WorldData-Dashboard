@@ -11,7 +11,8 @@
     <RootNamespace>WorldData.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>WorldDataiOS</AssemblyName>
-    <NuGetPackageImportStamp>a304cf80</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -126,40 +127,40 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="IG.Unified">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Infragistics\2015.1\Xamarin Forms\References\IG.Unified.dll</HintPath>
+      <HintPath>..\..\dlls\IG.Unified.dll</HintPath>
     </Reference>
     <Reference Include="IGChart.Unified">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Infragistics\2015.1\Xamarin Forms\References\IGChart.Unified.dll</HintPath>
+      <HintPath>..\..\dlls\IGChart.Unified.dll</HintPath>
     </Reference>
     <Reference Include="InfragisticsXF">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Infragistics\2015.1\Xamarin Forms\References\InfragisticsXF.dll</HintPath>
+      <HintPath>..\..\dlls\InfragisticsXF.dll</HintPath>
     </Reference>
     <Reference Include="InfragisticsXF.Controls.Barcodes">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Infragistics\2015.1\Xamarin Forms\References\InfragisticsXF.Controls.Barcodes.dll</HintPath>
+      <HintPath>..\..\dlls\InfragisticsXF.Controls.Barcodes.dll</HintPath>
     </Reference>
     <Reference Include="InfragisticsXF.Controls.Barcodes.iOS">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Infragistics\2015.1\Xamarin Forms\References\InfragisticsXF.Controls.Barcodes.iOS.dll</HintPath>
+      <HintPath>..\..\dlls\InfragisticsXF.Controls.Barcodes.iOS.dll</HintPath>
     </Reference>
     <Reference Include="InfragisticsXF.Controls.Charts">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Infragistics\2015.1\Xamarin Forms\References\InfragisticsXF.Controls.Charts.dll</HintPath>
+      <HintPath>..\..\dlls\InfragisticsXF.Controls.Charts.dll</HintPath>
     </Reference>
     <Reference Include="InfragisticsXF.Controls.Charts.iOS">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Infragistics\2015.1\Xamarin Forms\References\InfragisticsXF.Controls.Charts.iOS.dll</HintPath>
+      <HintPath>..\..\dlls\InfragisticsXF.Controls.Charts.iOS.dll</HintPath>
     </Reference>
     <Reference Include="InfragisticsXF.Controls.Gauges">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Infragistics\2015.1\Xamarin Forms\References\InfragisticsXF.Controls.Gauges.dll</HintPath>
+      <HintPath>..\..\dlls\InfragisticsXF.Controls.Gauges.dll</HintPath>
     </Reference>
     <Reference Include="InfragisticsXF.Controls.Gauges.iOS">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Infragistics\2015.1\Xamarin Forms\References\InfragisticsXF.Controls.Gauges.iOS.dll</HintPath>
+      <HintPath>..\..\dlls\InfragisticsXF.Controls.Gauges.iOS.dll</HintPath>
     </Reference>
     <Reference Include="InfragisticsXF.Controls.Grids">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Infragistics\2015.1\Xamarin Forms\References\InfragisticsXF.Controls.Grids.dll</HintPath>
+      <HintPath>..\..\dlls\InfragisticsXF.Controls.Grids.dll</HintPath>
     </Reference>
     <Reference Include="InfragisticsXF.Controls.Grids.iOS">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Infragistics\2015.1\Xamarin Forms\References\InfragisticsXF.Controls.Grids.iOS.dll</HintPath>
+      <HintPath>..\..\dlls\InfragisticsXF.Controls.Grids.iOS.dll</HintPath>
     </Reference>
     <Reference Include="InfragisticsXF.iOS">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Infragistics\2015.1\Xamarin Forms\References\InfragisticsXF.iOS.dll</HintPath>
+      <HintPath>..\..\dlls\InfragisticsXF.iOS.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Net.Http.Extensions">
@@ -172,34 +173,31 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.Forms.Core, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Xamarin.Forms.1.4.2.6359\lib\Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Forms.1.4.4.6392\lib\Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Xamarin.Forms.Platform">
-      <HintPath>..\..\packages\Xamarin.Forms.1.4.2.6359\lib\Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
+    <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.1.4.4.6392\lib\Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Platform.iOS, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Xamarin.Forms.1.4.2.6359\lib\Xamarin.iOS10\Xamarin.Forms.Platform.iOS.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Forms.1.4.4.6392\lib\Xamarin.iOS10\Xamarin.Forms.Platform.iOS.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Xamarin.Forms.1.4.2.6359\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Forms.1.4.4.6392\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <Import Project="..\..\packages\Xamarin.Forms.1.4.2.6359\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.1.4.2.6359\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
+  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\packages\Xamarin.Forms.1.4.2.6359\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.1.4.2.6359\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Xamarin.Forms.1.4.4.6392\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.1.4.4.6392\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
   </Target>
-  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
-  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
-    <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
-    <Error Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
-  </Target>
+  <Import Project="..\..\packages\Xamarin.Forms.1.4.4.6392\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.1.4.4.6392\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
 </Project>

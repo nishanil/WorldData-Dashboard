@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldData", "WorldData\WorldData\WorldData.csproj", "{7B433509-82B7-47C9-A5EC-F9EA79D27446}"
 EndProject
@@ -96,8 +96,8 @@ Global
 		{3BA585D9-010A-4A84-AB6E-DDCEE7DB4C35}.Debug|iPhone.Build.0 = Debug|iPhone
 		{3BA585D9-010A-4A84-AB6E-DDCEE7DB4C35}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
 		{3BA585D9-010A-4A84-AB6E-DDCEE7DB4C35}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
-		{3BA585D9-010A-4A84-AB6E-DDCEE7DB4C35}.Debug|Mixed Platforms.ActiveCfg = Debug|iPhone
-		{3BA585D9-010A-4A84-AB6E-DDCEE7DB4C35}.Debug|Mixed Platforms.Build.0 = Debug|iPhone
+		{3BA585D9-010A-4A84-AB6E-DDCEE7DB4C35}.Debug|Mixed Platforms.ActiveCfg = Debug|iPhoneSimulator
+		{3BA585D9-010A-4A84-AB6E-DDCEE7DB4C35}.Debug|Mixed Platforms.Build.0 = Debug|iPhoneSimulator
 		{3BA585D9-010A-4A84-AB6E-DDCEE7DB4C35}.Debug|x86.ActiveCfg = Debug|iPhone
 		{3BA585D9-010A-4A84-AB6E-DDCEE7DB4C35}.Release|Any CPU.ActiveCfg = Release|iPhone
 		{3BA585D9-010A-4A84-AB6E-DDCEE7DB4C35}.Release|ARM.ActiveCfg = Release|iPhone
